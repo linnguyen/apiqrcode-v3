@@ -1,0 +1,88 @@
+
+<div id="throbber" style="display:none; min-height:120px;"></div>
+<div id="noty-holder"></div>
+<div id="wrapper">
+        <!-- Navigation -->
+     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" style= "background-color: #00BCD4;  border-color: white; ">
+         <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://cijulenlinea.ucr.ac.cr/dev-users/">   
+               <!-- <img src="/assets/log.jpg" alt="LOGO"">-->
+               <img src="/assets/logo.jpg" class="img-circle" alt="Cinque Terre" width="160" height="50"> 
+            </a>
+        </div>
+        <!-- Top Menu Items -->
+        <ul class="nav navbar-right top-nav">
+            <li><a href="#" data-placement="bottom" data-toggle="tooltip" href="#" data-original-title="Stats"><i class="fa fa-bar-chart-o"></i>
+                </a>
+            </li>     
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin User <b class="fa fa-angle-down"></b></a>
+                <ul class="dropdown-menu">
+                    <li><a href="#"><i class="fa fa-fw fa-user"></i> Edit Profile</a></li>
+                    <li><a href="#"><i class="fa fa-fw fa-cog"></i> Change Password</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#"><i class="fa fa-fw fa-power-off"></i> Logout</a></li>
+                </ul>
+            </li>
+        </ul>
+         <div class="nav navbar-right top-nav" id="search-bar">
+            <form class="navbar-form" role="search">
+            <div class="input-group">
+            <input type="text" class="form-control" placeholder="Search" name="q" id= "search-bar-custom">
+            <div class="input-group-btn">
+                <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+            </div>
+           </div>
+           </form>
+        </div>
+        <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+        <div class="collapse navbar-collapse navbar-ex1-collapse" style="">
+             <ul class="nav navbar-nav side-nav">
+                <li>
+                    <%= link_to root_path do %>
+                    <i class="fa fa-fw fa-user-plus"></i> KIỂM KÊ
+                    <% end %>
+                </li>
+                <li>
+                    <%= link_to qrcodes_path do %>
+                    <i class="fa fa-fw fa-user-plus"></i>  TẠO MÃ QR
+                    <% end %>
+                </li>
+                <li>
+                    <a href="sugerencias"><i class="fa fa-fw fa-paper-plane-o"></i> QUẢN LÍ PHÔI LIỆU</a>
+                </li>
+                <li>
+                    <a href="#" data-toggle="collapse" data-target="#submenu2" aria-expanded="false"><i class="fa fa-fw fa-star"></i> THỐNG KÊ <i class="fa fa-fw fa-angle-down pull-right"></i></a>
+                    <ul class="nav collapse" id="submenu2" role="menu" aria-labelledby="btn-1" >
+                        <li data-toggle="collapse" data-target="#submenu1_1" aria-expanded="false"><a href="#"><i class="fa fa-angle-right"></i> Theo Tháng</a>
+                           <ul class="nav collapse" id="submenu1_1" role="menu" aria-labelledby="btn-1" >
+                            <li><a href="#"> Tháng 2, 2017</a></li>
+                            <li><a href="#"> Tháng 3, 2017</a></li>
+                            <li><a href="#"> Tháng 4, 2017</a></li>
+                            <li><a href="#"> Tháng 2, 2017</a></li>
+                            <li><a href="#"> Tháng 3, 2017</a></li>
+                            <li><a href="#"> Tháng 4, 2017</a></li>
+                            <li><a href="#"> Tháng 2, 2017</a></li>
+                            <li><a href="#"> Tháng 3, 2017</a></li>
+                            <li><a href="#"> Tháng 4, 2017</a></li>
+                            <li><a href="#"> Tháng 2, 2017</a></li>
+                            <li><a href="#"> Tháng 3, 2017</a></li>
+                            <li><a href="#"> Tháng 4, 2017</a></li>
+                           </ul>
+                        </li>
+                        <li><a href="#"><i class="fa fa-angle-right"></i> Thống Kê Theo Phòng</a></li>
+                        <li><a href="#"><i class="fa fa-angle-right"></i> Thống Kê Theo Danh Mục Thiết Bị</a></li>
+                    </ul>
+                </li>
+              </ul>      
+        </div>
+    </nav>
+    <!-- /.navbar-collapse -->
+
+ 
