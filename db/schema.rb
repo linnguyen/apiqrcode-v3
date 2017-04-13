@@ -110,9 +110,10 @@ ActiveRecord::Schema.define(version: 0) do
     t.date    "ngay_xuat"
     t.integer "ma_kho"
     t.integer "ma_nganh"
-    t.integer "ma_nguoi_quan_ly"
-    t.index ["ma_kho", "ma_nganh", "ma_nguoi_quan_ly"], name: "ma_kho", using: :btree
-    t.index ["ma_nguoi_quan_ly"], name: "ma_nguoi_quan_ly", using: :btree
+    t.integer "ma_nql"
+    t.index ["ma_kho", "ma_nganh", "ma_nql"], name: "ma_kho", using: :btree
+    t.index ["ma_nql"], name: "ma_nguoi_quan_ly", using: :btree
+    t.index ["ma_nql"], name: "ma_nql_UNIQUE", unique: true, using: :btree
   end
 
   create_table "tb_phong_ban", primary_key: "ma_phong_ban", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
@@ -141,5 +142,5 @@ ActiveRecord::Schema.define(version: 0) do
   add_foreign_key "tb_nhan_vien", "tb_phong_thuc_hanh", column: "ma_pth", primary_key: "ma_pth", name: "tb_nhan_vien_ibfk_3"
   add_foreign_key "tb_nhan_vien", "tb_quyen_truy_cap", column: "ma_qtc", primary_key: "ma_quyen", name: "tb_nhan_vien_ibfk_1"
   add_foreign_key "tb_phieu_nhap", "tb_kho", column: "ma_kho", primary_key: "ma_kho", name: "tb_phieu_nhap_ibfk_1"
-  add_foreign_key "tb_phieu_xuat", "tb_nhan_vien", column: "ma_nguoi_quan_ly", primary_key: "ma_nql", name: "tb_phieu_xuat_ibfk_1"
+  add_foreign_key "tb_phieu_xuat", "tb_nhan_vien", column: "ma_nql", primary_key: "ma_nql", name: "tb_phieu_xuat_ibfk_1"
 end
