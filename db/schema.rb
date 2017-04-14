@@ -12,13 +12,6 @@
 
 ActiveRecord::Schema.define(version: 0) do
 
-  create_table "tb_chi_thiet_thiet_bi_xuat", primary_key: "ma_ctpx", id: :string, limit: 10, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
-    t.string  "ma_qr",         limit: 20
-    t.string  "ma_phieu_xuat", limit: 15
-    t.integer "ma_tinh_trang"
-    t.index ["ma_tinh_trang"], name: "ma_tinh_trang", using: :btree
-  end
-
   create_table "tb_chi_tiet_nhap_xuat", primary_key: "thiet_bi_id", id: :string, limit: 10, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.string  "ma_thiet_bi",      limit: 10
     t.string  "ten_thiet_bi",     limit: 50
@@ -34,12 +27,21 @@ ActiveRecord::Schema.define(version: 0) do
     t.string  "ma_phieu_nhap",    limit: 15
     t.string  "ma_phieu_xuat",    limit: 15
     t.string  "ma_code",          limit: 30
+    t.index ["ma_code"], name: "ma_code_UNIQUE", unique: true, using: :btree
     t.index ["ma_nuoc_san_xuat"], name: "ma_nuoc_san_xuat", using: :btree
     t.index ["ma_phieu_nhap"], name: "ma_phieu_nhap", using: :btree
     t.index ["ma_phieu_nhap"], name: "ma_phieu_nhap_2", using: :btree
     t.index ["ma_phieu_xuat"], name: "ma_phieu_xuat", using: :btree
     t.index ["ma_thiet_bi", "ma_nuoc_san_xuat", "ma_phieu_nhap", "ma_phieu_xuat"], name: "ma_thiet_bi", using: :btree
     t.index ["ma_thiet_bi"], name: "ma_thiet_bi_2", using: :btree
+  end
+
+  create_table "tb_chi_tiet_thiet_bi_xuat", primary_key: "ma_ctpx", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+    t.string  "ma_qr",         limit: 20
+    t.string  "ma_phieu_xuat", limit: 15
+    t.integer "ma_tinh_trang"
+    t.index ["ma_phieu_xuat"], name: "fk_tb_chi_tiet_thiet_bi_xuat_1_idx", using: :btree
+    t.index ["ma_tinh_trang"], name: "ma_tinh_trang", using: :btree
   end
 
   create_table "tb_danh_muc_chung_loai", primary_key: "ma_chung_loai", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
@@ -65,6 +67,14 @@ ActiveRecord::Schema.define(version: 0) do
     t.string  "ten_kho",      limit: 50, null: false
     t.integer "ma_phong_ban",            null: false
     t.index ["ma_phong_ban"], name: "ma_phong_ban", using: :btree
+  end
+
+  create_table "tb_kiem_ke", primary_key: "ma_kiem_ke", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.string   "ma_thiet_bi",      limit: 45
+    t.integer  "so_luong_thuc_te"
+    t.string   "ghi_chu",          limit: 45
+    t.string   "ma_pth",           limit: 10
+    t.datetime "thoi_gian"
   end
 
   create_table "tb_nhan_vien", primary_key: "ma_nql", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
@@ -113,7 +123,6 @@ ActiveRecord::Schema.define(version: 0) do
     t.integer "ma_nql"
     t.index ["ma_kho", "ma_nganh", "ma_nql"], name: "ma_kho", using: :btree
     t.index ["ma_nql"], name: "ma_nguoi_quan_ly", using: :btree
-    t.index ["ma_nql"], name: "ma_nql_UNIQUE", unique: true, using: :btree
   end
 
   create_table "tb_phong_ban", primary_key: "ma_phong_ban", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
@@ -122,8 +131,8 @@ ActiveRecord::Schema.define(version: 0) do
   end
 
   create_table "tb_phong_thuc_hanh", primary_key: "ma_pth", id: :string, limit: 10, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
-    t.string "phong_thuc_hanh", limit: 50, null: false
-    t.string "ghi_chu",         limit: 50, null: false
+    t.string "phong_thuc_hanh", limit: 50, collation: "utf8_general_ci"
+    t.string "ghi_chu",         limit: 50, collation: "utf8_general_ci"
   end
 
   create_table "tb_quyen_truy_cap", primary_key: "ma_quyen", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
@@ -134,6 +143,7 @@ ActiveRecord::Schema.define(version: 0) do
   add_foreign_key "tb_chi_tiet_nhap_xuat", "tb_danh_muc_thiet_bi", column: "ma_thiet_bi", primary_key: "ma_thiet_bi", name: "tb_chi_tiet_nhap_xuat_ibfk_3"
   add_foreign_key "tb_chi_tiet_nhap_xuat", "tb_nuoc_san_xuat", column: "ma_nuoc_san_xuat", primary_key: "ma_nuoc_san_xuat", name: "tb_chi_tiet_nhap_xuat_ibfk_2"
   add_foreign_key "tb_chi_tiet_nhap_xuat", "tb_phieu_xuat", column: "ma_phieu_xuat", primary_key: "ma_phieu_xuat", name: "tb_chi_tiet_nhap_xuat_ibfk_4"
+  add_foreign_key "tb_chi_tiet_thiet_bi_xuat", "tb_phieu_xuat", column: "ma_phieu_xuat", primary_key: "ma_phieu_xuat", name: "fk_tb_chi_tiet_thiet_bi_xuat_1"
   add_foreign_key "tb_danh_muc_chung_loai", "tb_nhom_thiet_bi", column: "ma_nhom_thiet_bi", primary_key: "ma_nhom_thiet_bi", name: "tb_danh_muc_chung_loai_ibfk_1"
   add_foreign_key "tb_danh_muc_thiet_bi", "tb_danh_muc_chung_loai", column: "ma_chung_loai", primary_key: "ma_chung_loai", name: "tb_danh_muc_thiet_bi_ibfk_1"
   add_foreign_key "tb_kho", "tb_phong_ban", column: "ma_phong_ban", primary_key: "ma_phong_ban", name: "tb_kho_ibfk_1"

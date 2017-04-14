@@ -13,14 +13,14 @@ default: &default
   adapter: mysql2
   encoding: utf8
   pool: 5
-  username: sql12167698
-  password: cdEH7eGl4Q
-  host: sql12.freemysqlhosting.net
+  username: root
+  password: 123abcABC@
+  host: localhost
   socket: /var/run/mysqld/mysqld.sock
 
 development:
   <<: *default
-  database: sql12167698
+  database: thietbi
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
