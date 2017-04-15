@@ -7,7 +7,7 @@ Rails.application.routes.draw do
  	post 'inventories' => 'inventories#create'
  end
  match '/qrcodes' => 'qrcodes#generate', via: [:get, :post]
- root 'inventories#index'
- # resources :inventories , only: [:index]
- # resources :qrcodes
+ root 'homes#index'
+ resources :inventories , only: [:index]
+ resources :qrcodes , only: [:generate]
 end
