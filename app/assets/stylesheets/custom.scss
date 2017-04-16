@@ -112,10 +112,17 @@
 
 .side-nav>li>ul>li>a {
     display: block;
-    padding: 10px 15px 10px 38px;
+    padding: 10px 20px 10px 38px;
     text-decoration: none;
     /*color: #999;*/
-    color: #fff;    
+    color: #FFF;    
+}
+
+#submenu1 > li > ul > li > a {
+    display: block;
+    padding: 10px 10px 10px 50px;
+    text-decoration: none;
+    color: #FFF;
 }
 
 .side-nav>li>ul>li>a:hover {
@@ -444,4 +451,18 @@ table.qr-code td.white { background-color: #fff; }
     color: #fff!important;
 }
 
+/* Login page */
 
+.login { 
+  background: url(http://lorempixel.com/1920/1920/city/9/) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.panel-default {
+opacity: 0.9;
+margin-top:30px;
+}
+.form-group.last { margin-bottom:0px; }

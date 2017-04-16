@@ -14,24 +14,26 @@
                                 <th>Số lượng thực tế</th>
                                 <th>Ghi chú</th>
                                 <th>Phòng</th>
+                                <th>Thoi gian</th>
                                 <th>Hành động</th>
                               </tr>
                            </thead>
                            <tbody>
                            <% i=0 %>
-                           <% if @devices.present? %>
-                           <% @devices.each do |device| %>
+                           <% if @thiet_bi.present? %>
+                           <% @thiet_bi.each do |device| %>
                            <tr>
                                <td><%= i+=1 %></td>
-                               <td><%= device.code_of_device %></td>
-                               <td><%= device.code_of_device %></td>
-                               <td><%= device.actual_amount %></td>
-                               <td><%= device.note %></td>
+                               <td><%= device.ma_thiet_bi %></td>
+                               <td><%= device.ma_thiet_bi %></td>
+                               <td><%= device.so_luong_thuc_te %></td>
+                               <td><%= device.ghi_chu %></td>
                                <td></td>
+                               <td><%= device.thoi_gian %></td>
                                <td class="text-center"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></td>
                            </tr>
                            <% end %>
-                           <%= will_paginate @devices %>
+                           <%= will_paginate @thiet_bi %>
                            <% end %>
                           </tbody>
                        </table>

@@ -70,11 +70,11 @@ ActiveRecord::Schema.define(version: 0) do
   end
 
   create_table "tb_kiem_ke", primary_key: "ma_kiem_ke", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
-    t.string   "ma_thiet_bi",      limit: 45
-    t.integer  "so_luong_thuc_te"
-    t.string   "ghi_chu",          limit: 45
-    t.string   "ma_pth",           limit: 10
-    t.datetime "thoi_gian"
+    t.string  "ma_thiet_bi",      limit: 45
+    t.integer "so_luong_thuc_te"
+    t.string  "ghi_chu",          limit: 45
+    t.string  "ma_pth",           limit: 10
+    t.date    "thoi_gian"
   end
 
   create_table "tb_nhan_vien", primary_key: "ma_nql", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|

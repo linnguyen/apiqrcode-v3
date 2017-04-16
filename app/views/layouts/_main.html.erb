@@ -41,7 +41,7 @@
            </form>
         </div>
         <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
-        <div class="collapse navbar-collapse navbar-ex1-collapse" style="">
+        <div class="collapse navbar-collapse navbar-ex1-collapse" >
              <ul class="nav navbar-nav side-nav">
                 <li>
                     <%= link_to inventories_path do %>
@@ -57,25 +57,22 @@
                     <a href="sugerencias"><i class="fa fa-fw fa-paper-plane-o"></i> QUẢN LÍ PHÔI LIỆU</a>
                 </li>
                 <li>
-                    <a href="#" data-toggle="collapse" data-target="#submenu2" aria-expanded="false"><i class="fa fa-fw fa-star"></i> THỐNG KÊ <i class="fa fa-fw fa-angle-down pull-right"></i></a>
-                    <ul class="nav collapse" id="submenu2" role="menu" aria-labelledby="btn-1" >
+                    <a href="#" data-toggle="collapse" data-target="#submenu1" aria-expanded="false"><i class="fa fa-fw fa-star"></i> THỐNG KÊ <i class="fa fa-fw fa-angle-down pull-right"></i></a>
+                    <ul class="nav collapse" id="submenu1" role="menu" aria-labelledby="btn-1" >
                         <li data-toggle="collapse" data-target="#submenu1_1" aria-expanded="false"><a href="#"><i class="fa fa-angle-right"></i> Theo Tháng</a>
-                           <ul class="nav collapse" id="submenu1_1" role="menu" aria-labelledby="btn-1" >
-                            <li><a href="#"> Tháng 2, 2017</a></li>
-                            <li><a href="#"> Tháng 3, 2017</a></li>
-                            <li><a href="#"> Tháng 4, 2017</a></li>
-                            <li><a href="#"> Tháng 2, 2017</a></li>
-                            <li><a href="#"> Tháng 3, 2017</a></li>
-                            <li><a href="#"> Tháng 4, 2017</a></li>
-                            <li><a href="#"> Tháng 2, 2017</a></li>
-                            <li><a href="#"> Tháng 3, 2017</a></li>
-                            <li><a href="#"> Tháng 4, 2017</a></li>
-                            <li><a href="#"> Tháng 2, 2017</a></li>
-                            <li><a href="#"> Tháng 3, 2017</a></li>
-                            <li><a href="#"> Tháng 4, 2017</a></li>
+                           <ul class="nav collapse"  id="submenu1_1" role="menu" aria-labelledby="btn-1" >
+                           <% get_list_day.each do |d| %>
+                            <li><a href="#"> Tháng <%= d.month %>, <%= d.year %></a></li>
+                            <% end %>
                            </ul>
                         </li>
-                        <li><a href="#"><i class="fa fa-angle-right"></i> Thống Kê Theo Phòng</a></li>
+                        <li data-toggle="collapse" data-target="#submenu1_2" aria-expanded="false"><a href="#"><i class="fa fa-angle-right"></i> Thống Kê Theo Phòng</a>
+                            <ul class="nav collapse"  id="submenu1_2" role="menu" aria-labelledby="btn-1" >
+                            <li><a href="#"> Phòng thực hành cơ khí</a></li>
+                            <li><a href="#"> Phòng thực hành điện, điện tử</a></li>
+                            <li><a href="#"> Phòng may</a></li>
+                           </ul>
+                        </li>
                         <li><a href="#"><i class="fa fa-angle-right"></i> Thống Kê Theo Danh Mục Thiết Bị</a></li>
                     </ul>
                 </li>
