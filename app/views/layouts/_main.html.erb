@@ -26,7 +26,9 @@
                     <li><a href="#"><i class="fa fa-fw fa-user"></i> Edit Profile</a></li>
                     <li><a href="#"><i class="fa fa-fw fa-cog"></i> Change Password</a></li>
                     <li class="divider"></li>
-                    <li><a href="#"><i class="fa fa-fw fa-power-off"></i> Logout</a></li>
+                    <li><%= link_to logout_path,method: "delete" do %>
+                      <i class="fa fa-fw fa-power-off"></i>  Đăng xuất
+                    <% end %></li>
                 </ul>
             </li>
         </ul>
