@@ -15,4 +15,5 @@ Rails.application.routes.draw do
  delete '/logout',  to: 'sessions#destroy'
  resources :inventories , only: [:index]
  resources :qrcodes , only: [:generate]
+ get 'statistics/time/', to: 'statistics#show_by_time'
 end
