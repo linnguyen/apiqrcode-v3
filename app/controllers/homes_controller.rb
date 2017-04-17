@@ -1,5 +1,5 @@
 class HomesController < ApplicationController
-	def index
+    def index
 		# render json: get_list_day
     end
 end
