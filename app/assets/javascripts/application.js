@@ -42,4 +42,29 @@ $(function(){
     $("#left ul.nav li.current").parents('ul.children').addClass("in");
 
 }(window.jQuery);
+
+
+$(document).ready( function() {
+
+    var base_url = window.location.protocol + "//" + window.location.host;
+
+    $('#search-bar-custom').searchbox({
+        url: base_url + '/search/',
+        param: 'search',
+        dom_id: '#livesearch',
+        loading_css: '#livesearch_loading'
+    })      
+});
+
+$(function() {
+    $('#products th a').live("click", function(){
+        $.getScript(this.href);
+        return false;
+    });
+    $('inventory_search input').keyup(function(){
+        $.get($("#inventory_search)").attr("action"), $("#inventory_search").serialize(), null, "script");
+        return false;
+    });
+
+});
     
