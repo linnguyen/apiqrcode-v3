@@ -1,4 +1,13 @@
 module ApplicationHelper
+	def full_title(page_title)
+        base_title = "Device Management for Da Nang Vocational Training College"
+        if page_title.empty?
+        	base_title
+        else
+        	"#{page_title} | #{base_title}"
+        end
+	end
+
 	def get_list_day
 		@days=[]
 		@inventories = KiemKe.all
@@ -26,7 +35,7 @@ module ApplicationHelper
 	end
 
 	def get_difference_quantity
-		
+
 	end
 
 	def get_device_by_id thiet_bi_id

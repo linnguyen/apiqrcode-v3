@@ -1,7 +1,10 @@
 class StatisticsController < ApplicationController
 	def show_by_time
-         @thiet_bi = KiemKe.where("MONTH(thoi_gian) = ? && YEAR(thoi_gian) = ?", params[:month], params[:year])
+		 @month = params[:month]
+		 @year = params[:year]
+         @thiet_bi = KiemKe.where("MONTH(thoi_gian) = ? && YEAR(thoi_gian) = ?", @month, @year)
          .paginate(page: params[:page], :per_page => 8)
+         
     end
 
 	# def show_by_room
