@@ -78,18 +78,19 @@ ActiveRecord::Schema.define(version: 0) do
   end
 
   create_table "tb_nhan_vien", primary_key: "ma_nql", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
-    t.string  "ho_ten",        limit: 20
-    t.string  "gioi_tinh",     limit: 5
-    t.string  "dia_chi",       limit: 50
-    t.string  "so_dien_thoai", limit: 15
-    t.string  "email",         limit: 20
-    t.string  "chuc_vu",       limit: 30
-    t.string  "ten_dang_nhap", limit: 36
-    t.string  "mat_khau",      limit: 36
+    t.string  "ho_ten",          limit: 20
+    t.string  "gioi_tinh",       limit: 5
+    t.string  "dia_chi",         limit: 50
+    t.string  "so_dien_thoai",   limit: 15
+    t.string  "email",           limit: 20
+    t.string  "chuc_vu",         limit: 30
+    t.string  "ten_dang_nhap",   limit: 36
+    t.string  "mat_khau",        limit: 36
     t.integer "ma_qtc"
-    t.string  "ma_pth",        limit: 10
+    t.string  "ma_pth",          limit: 10
     t.integer "ma_phong_ban"
     t.integer "ma_khoa"
+    t.string  "password_digest", limit: 100, collation: "utf8_general_ci"
     t.index ["ma_khoa"], name: "MaKhoa", using: :btree
     t.index ["ma_phong_ban"], name: "ma_phong_ban", using: :btree
     t.index ["ma_pth"], name: "ma_pth", using: :btree
