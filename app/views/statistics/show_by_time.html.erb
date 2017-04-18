@@ -17,7 +17,6 @@
                                 <th>Số lượng lí thuyết</th>
                                 <th>Số lượng thực tế</th>
                                 <th>Chênh lệch</th>
-                                <th>Ghi chú</th>
                                 <th>Phòng</th>
                               </tr>
                            </thead>
@@ -27,10 +26,11 @@
                            <% @thiet_bi.each do |device| %>
                            <tr>
                                <td><%= i+=1 %></td>
-                               <td><%= get_name_device_by_id device.ma_thiet_bi %></td>
+                               <td><%= get_device_by_id(device.ma_thiet_bi).ten_thiet_bi %></td>
                                <td><%= device.ma_thiet_bi %></td>
+                               <td><%= get_device_by_id(device.ma_thiet_bi).
+                                 so_luong%></td>
                                <td><%= device.so_luong_thuc_te %></td>
-                               <td><%= device.ghi_chu %></td>
                                <td></td>
                                <td></td>
                            </tr>

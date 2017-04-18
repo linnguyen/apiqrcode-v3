@@ -25,7 +25,11 @@ module ApplicationHelper
 		return @rooms
 	end
 
-	def get_name_device_by_id thiet_bi_id
-		name = ChiTietNhapXuat.find_by(thiet_bi_id: thiet_bi_id).ten_thiet_bi
+	def get_difference_quantity
+		
+	end
+
+	def get_device_by_id thiet_bi_id
+		device = ChiTietNhapXuat.find_by(thiet_bi_id: thiet_bi_id)
 	end
 end
