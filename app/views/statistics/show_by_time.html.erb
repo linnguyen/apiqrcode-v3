@@ -5,7 +5,7 @@
                 <div class="col-sm-12 col-md-12 well" id="content">
                     <div class="text-inline">
                      <h3 class="text-center">Thống Kê</h3>
-                     <h4 class="text-right">Thời gian: 3/2017</h4>
+                     <h4 class="text-right">Thời gian: <%= @month %> /<%= @year %></h4>
                     </div>
                     <div class="table-responsive">          
                         <table class="table table-bordered table-hover">
@@ -17,7 +17,6 @@
                                 <th>Số lượng lí thuyết</th>
                                 <th>Số lượng thực tế</th>
                                 <th>Chênh lệch</th>
-                                <th>Ghi chú</th>
                                 <th>Phòng</th>
                               </tr>
                            </thead>
@@ -27,15 +26,18 @@
                            <% @thiet_bi.each do |device| %>
                            <tr>
                                <td><%= i+=1 %></td>
-                               <td><%= get_name_device_by_id device.ma_thiet_bi %></td>
+                               <td><%= get_device_by_id(device.ma_thiet_bi).ten_thiet_bi %></td>
                                <td><%= device.ma_thiet_bi %></td>
+                               <td><%= get_device_by_id(device.ma_thiet_bi).
+                                 so_luong%></td>
                                <td><%= device.so_luong_thuc_te %></td>
-                               <td><%= device.ghi_chu %></td>
                                <td></td>
                                <td></td>
                            </tr>
                            <% end %>
-                           <% end %>
+                           <% else %>
+
+                          <% end %>
                           </tbody>
                        </table>
                    </div>

@@ -25,8 +25,19 @@ module SessionsHelper
 	end
     
     def log_out
-    	forget(current_user)
+    	# forget(current_user)
     	session.delete(:ma_nql)
     	@current_user = nil
+    end
+
+    def logged_in_user
+        unless logged_in?
+        # redirect_to sessions_new_path(@messages: "Vui lòng đăng nhập")
+         redirect_to login_path
+        end
+    end
+    
+    def is_admin?
+        current_user.ma_qtc == 1
     end
 end

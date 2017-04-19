@@ -1,4 +1,13 @@
 module ApplicationHelper
+	def full_title(page_title)
+        base_title = "Trường Cao Đẳng Nghề Đà Nẵng"
+        if page_title.empty?
+        	base_title
+        else
+        	"#{page_title} | #{base_title}"
+        end
+	end
+
 	def get_list_day
 		@days=[]
 		@inventories = KiemKe.all
@@ -19,13 +28,17 @@ module ApplicationHelper
 
 	def get_list_room
 		@rooms =[]
-		PhongThucHanh.each do |p|
-			@rooms << p.phong_thuc_hanh
+		PhongThucHanh.all.each do |r|
+			@rooms << r
 		end
 		return @rooms
 	end
 
-	def get_name_device_by_id thiet_bi_id
-		name = ChiTietNhapXuat.find_by(thiet_bi_id: thiet_bi_id).ten_thiet_bi
+	def get_difference_quantity
+
+	end
+
+	def get_device_by_id thiet_bi_id
+		device = ChiTietNhapXuat.find_by(thiet_bi_id: thiet_bi_id)
 	end
 end

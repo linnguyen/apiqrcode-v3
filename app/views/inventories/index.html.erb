@@ -1,20 +1,22 @@
-<%= provide(:title, "Inventories") %>
+<%= provide(:title, "Chi Tiết Kiểm Kê") %>
 <div id="page-wrapper">
         <div class="container-fluid">
             <div class="row" id="main" >
                 <div class="col-sm-12 col-md-12 well" id="content">
                     <h2 class="text-center">Chi Tiết Kiểm Kê</h2>
-                    <div class="table-responsive">          
+                    <div class="table-responsive">  
+                      hehe        
                         <table class="table table-bordered table-hover">
                             <thead>
                               <tr>
                                 <th>#</th>
                                 <th>Tên thiết bị</th>
                                 <th>Mã thiết bị</th>
+                                <th>Đơn vị tính</th>
                                 <th>Số lượng thực tế</th>
                                 <th>Ghi chú</th>
-                                <th>Phòng</th>
-                                <th>Thoi gian</th>
+                                <th>Nơi đặt để</th>
+                                <th>Thời Gian</th>
                                 <th>Hành động</th>
                               </tr>
                            </thead>
@@ -24,8 +26,9 @@
                            <% @thiet_bi.each do |device| %>
                            <tr>
                                <td><%= i+=1 %></td>
-                               <td><%= get_name_device_by_id device.ma_thiet_bi %></td>
+                               <td><%= get_device_by_id(device.ma_thiet_bi).ten_thiet_bi %></td>
                                <td><%= device.ma_thiet_bi %></td>
+                               <td></td>
                                <td><%= device.so_luong_thuc_te %></td>
                                <td><%= device.ghi_chu %></td>
                                <td></td>

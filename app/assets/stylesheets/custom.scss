@@ -242,7 +242,8 @@ table.qr-code td.white { background-color: #fff; }
     margin: 30px;
 }
 #result {
-    margin: 30px;
+    width: 40%;
+    height: 40%;
 }
 
 /* Search bar */
@@ -467,3 +468,9 @@ opacity: 0.9;
 margin-top:30px;
 }
 .form-group.last { margin-bottom:0px; }
+
+/* Error */
+
+.error {
+    text-align: center;
+}

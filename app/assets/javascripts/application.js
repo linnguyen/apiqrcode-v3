@@ -43,7 +43,7 @@ $(function(){
 
 }(window.jQuery);
 
-
+// for seach form, not work
 $(document).ready( function() {
 
     var base_url = window.location.protocol + "//" + window.location.host;
@@ -67,4 +67,12 @@ $(function() {
     });
 
 });
+// for qr code
+
+// function myfunc()
+// {
+//     $('#code_input').change(function(){
+//      $('#form_qr').submit(); 
+//     }); 
+// }
     
