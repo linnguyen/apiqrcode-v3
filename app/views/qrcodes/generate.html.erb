@@ -5,7 +5,7 @@
                 <div class="col-sm-4 well" id="inputText">
                       <%= form_tag(qrcodes_path,id:'form_qr') do |f| %>
                       <div class="form-group">
-                      <%= text_field_tag(:text,nil,class: "form-control",id: "code_input",  oninput: "myfunc()") %>
+                      <%= text_field_tag(:text,nil,class: "form-control",id: "code_input",  oninput: "myfunc2()") %>
                       </div>
                       <div class="form-group">
                       <%= submit_tag("Generate",:class => "btn btn-large btn-primary")%>
@@ -36,22 +36,46 @@
         </div>
 </div>
 <script>
+
 $(document).on("change","#code_input",function(){
   var periods = $(this).val();
   var text = $("#code_input").val();
   $.ajax({
     type: "POST",
     url: "/qrcodes",
-    data: { periods: periods, text: text } 
+    data:{ periods: periods, text: text } 
   });
 });
 
-function myfunc()
-{
+function myfunc(){
     // $('#code_input').oninput(function(){
      $('#form_qr').submit(); 
-    // }); 
+
+     $(document).on("change", "#cbo", function() {
+     $.ajax({
+     url: "/product_details/show",
+     type: "POST",
+     data: {"cbo_id" : $(this).val()},
+     dataType: "json",
+     success: function(data) {
+       alert('successfully');
+     }
+   });
+  });
 }
+function myfunc2(){
+  var ip = $('#code_input').val().trim();
+  $.ajaxSetup({ cache: false });
+  $.ajax({
+  type: "POST",
+  url: "/qrcodes",  
+  data: {text: ip}
+  success: function(updatedTable) {
+  $('table').html(updatedTable);
+  }
+ });
+}
+
 
 
 </script>
