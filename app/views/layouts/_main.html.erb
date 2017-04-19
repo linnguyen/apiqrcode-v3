@@ -74,9 +74,9 @@
                         </li>
                         <li data-toggle="collapse" data-target="#submenu1_2" aria-expanded="false"><a href="#"><i class="fa fa-angle-right"></i> Thống Kê Theo Phòng</a>
                             <ul class="nav collapse"  id="submenu1_2" role="menu" aria-labelledby="btn-1" >
-                            <li><a href="#"> Phòng thực hành cơ khí</a></li>
-                            <li><a href="#"> Phòng thực hành điện, điện tử</a></li>
-                            <li><a href="#"> Phòng may</a></li>
+                            <% get_list_room.each do |r| %>
+                            <li><%= link_to r.phong_thuc_hanh, statistics_room_path(:room => r.ma_pth)%></li>
+                            <% end %>
                            </ul>
                         </li>
                         <li><a href="#"><i class="fa fa-angle-right"></i> Thống Kê Theo Danh Mục Thiết Bị</a></li>

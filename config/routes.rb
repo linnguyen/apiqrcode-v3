@@ -16,5 +16,6 @@ Rails.application.routes.draw do
  resources :inventories , only: [:index]
  resources :qrcodes , only: [:generate]
  get 'statistics/time/', to: 'statistics#show_by_time'
+ get 'statistics/room/', to: 'statistics#show_by_room'
  match 'search(/:search)', :to => 'inventories#search', :as => :search, via: [:get, :post]
 end
