@@ -153,6 +153,25 @@
     padding: 5px 15px;
 }
 
+.navbar{
+   height: 58px;
+}
+
+.title-table{
+    color:#428bca; 
+    font-size: 15px; 
+    vertical-align: middle; 
+    height: 24px; 
+    font-family: sans-serif;
+    padding-top: 5px;
+    font-weight: bold;
+}
+
+.title{
+    background-color:#E9EBEC;
+    padding: 14px; 
+    border-bottom: solid 1px #bdbdbd;
+}
 /* footer */
 
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700,300);
