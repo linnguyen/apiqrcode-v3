@@ -58,11 +58,6 @@
                     <% end %>
                 </li>
                 <li>
-                    <%= link_to qrcodes_path do %>
-                    <i class="fa fa-fw fa-user-plus"></i>  TẠO MÃ QR
-                    <% end %>
-                </li>
-                <li>
                     <a href="#" data-toggle="collapse" data-target="#submenu1" aria-expanded="false"><i class="fa fa-fw fa-star"></i> THỐNG KÊ <i class="fa fa-fw fa-angle-down pull-right"></i></a>
                     <ul class="nav collapse" id="submenu1" role="menu" aria-labelledby="btn-1" >
                         <li data-toggle="collapse" data-target="#submenu1_1" aria-expanded="false"><a href="#"><i class="fa fa-angle-right"></i> Theo Tháng</a>
@@ -82,11 +77,21 @@
                         <li><a href="#"><i class="fa fa-angle-right"></i> Thống Kê Theo Danh Mục Thiết Bị</a></li>
                     </ul>
                 </li>
+                <li>
+                    <%= link_to qrcodes_path do %>
+                    <i class="fa fa-fw fa-user-plus"></i>  TẠO MÃ QR
+                    <% end %>
+                </li>
+                <li>
+                    <%= link_to qrcodes_path do %>
+                    <i class="fa fa-fw fa-user-plus"></i>  QUẢN LÍ PHÔI LIỆU
+                    <% end %>
+                </li>
                 <% else %>
                  <li>
                     <a href="#" data-toggle="collapse" data-target="#submenu2" aria-expanded="false"><i class="fa fa-fw fa-paper-plane-o"></i> QUẢN LÍ PHÔI LIỆU<i class="fa fa-fw fa-angle-down pull-right"></i></a>
                     <ul class="nav collapse" id="submenu2" role="menu" aria-labelledby="btn-1" >
-                        <li data-toggle="collapse" data-target="#submenu1_1" aria-expanded="false"><a href="#"><i class="fa fa-address-book-o"></i>     Đề Xuất</a>
+                        <li data-toggle="collapse" data-target="#submenu1_1" aria-expanded="false"><a href="#"><i class="fa fa-address-book-o"></i>   Đề Xuất</a>
                         </li>
                         <li data-toggle="collapse" data-target="#submenu1_1" aria-expanded="false"><a href="#"><i class="fa fa-address-book-o"></i> Kết Quả Đề Xuất</a>
                         </li>

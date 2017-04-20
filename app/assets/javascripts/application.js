@@ -44,17 +44,17 @@ $(function(){
 }(window.jQuery);
 
 // for seach form, not work
-$(document).ready( function() {
+// $(document).ready( function() {
 
-    var base_url = window.location.protocol + "//" + window.location.host;
+//     var base_url = window.location.protocol + "//" + window.location.host;
 
-    $('#search-bar-custom').searchbox({
-        url: base_url + '/search/',
-        param: 'search',
-        dom_id: '#livesearch',
-        loading_css: '#livesearch_loading'
-    })      
-});
+//     $('#search-bar-custom').searchbox({
+//         url: base_url + '/search/',
+//         param: 'search',
+//         dom_id: '#livesearch',
+//         loading_css: '#livesearch_loading'
+//     })      
+// });
 
 $(function() {
     $('#products th a').live("click", function(){
@@ -69,12 +69,12 @@ $(function() {
 });
 // for qr code
 
-// function myfunc()
-// {
-//     $('#code_input').change(function(){
-//      $('#form_qr').submit(); 
-//     }); 
-// }
+function myfunc()
+{
+    $('#code_input').change(function(){
+     $('#form_qr').submit(); 
+    }); 
+}
     
 
     $.ajax({
@@ -83,8 +83,21 @@ $(function() {
            data: $("#idForm").serialize(), // serializes the form's elements.
            success: function(data)
            {
-               alert(data); // show response from the php script.
+               // alert(data); // show response from the php script.
            }
          });
     
      $('#form_qr').submit();
+
+function myfunc2(){
+  var ip = $('#code_input').val().trim();
+  $.ajax({
+  type: "POST",
+  url: "/qrcodes",  
+  data: {text: ip}
+  return false;
+ });
+}
+function myfunc3() {
+   alert("hhesl");
+}
