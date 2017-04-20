@@ -12,6 +12,7 @@
 
 ActiveRecord::Schema.define(version: 0) do
 
+
   create_table "tb_chi_tiet_nhap_xuat", primary_key: "thiet_bi_id", id: :string, limit: 10, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.string  "ma_thiet_bi",      limit: 10
     t.string  "ten_thiet_bi",     limit: 50
@@ -154,4 +155,5 @@ ActiveRecord::Schema.define(version: 0) do
   add_foreign_key "tb_nhan_vien", "tb_quyen_truy_cap", column: "ma_qtc", primary_key: "ma_quyen", name: "tb_nhan_vien_ibfk_1"
   add_foreign_key "tb_phieu_nhap", "tb_kho", column: "ma_kho", primary_key: "ma_kho", name: "tb_phieu_nhap_ibfk_1"
   add_foreign_key "tb_phieu_xuat", "tb_nhan_vien", column: "ma_nql", primary_key: "ma_nql", name: "tb_phieu_xuat_ibfk_1"
+
 end
