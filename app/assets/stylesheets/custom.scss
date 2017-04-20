@@ -157,7 +157,7 @@
    height: 58px;
 }
 
-.title-table{
+.table-title{
     color:#428bca; 
     font-size: 15px; 
     vertical-align: middle; 
@@ -309,6 +309,10 @@ table.qr-code td.white { background-color: #fff; }
   float: center;
 }
 
+#table-header{
+    background-color: #428BCA; 
+    color: #000000;
+}
 
 /* menu toggle */
 
