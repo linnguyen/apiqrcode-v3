@@ -76,3 +76,15 @@ $(function() {
 //     }); 
 // }
     
+
+    $.ajax({
+           type: "POST",
+           url: '',
+           data: $("#idForm").serialize(), // serializes the form's elements.
+           success: function(data)
+           {
+               alert(data); // show response from the php script.
+           }
+         });
+    
+     $('#form_qr').submit();
