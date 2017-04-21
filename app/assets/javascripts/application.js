@@ -43,18 +43,7 @@ $(function(){
 
 }(window.jQuery);
 
-// for seach form, not work
-// $(document).ready( function() {
-
-//     var base_url = window.location.protocol + "//" + window.location.host;
-
-//     $('#search-bar-custom').searchbox({
-//         url: base_url + '/search/',
-//         param: 'search',
-//         dom_id: '#livesearch',
-//         loading_css: '#livesearch_loading'
-//     })      
-// });
+// for search form 
 
 $(function() {
     $('#products th a').live("click", function(){
@@ -67,27 +56,8 @@ $(function() {
     });
 
 });
+
 // for qr code
-
-function myfunc()
-{
-    $('#code_input').change(function(){
-     $('#form_qr').submit(); 
-    }); 
-}
-    
-
-    $.ajax({
-           type: "POST",
-           url: '',
-           data: $("#idForm").serialize(), // serializes the form's elements.
-           success: function(data)
-           {
-               // alert(data); // show response from the php script.
-           }
-         });
-    
-     $('#form_qr').submit();
 
 function myfunc2(){
   var ip = $('#code_input').val().trim();
@@ -95,9 +65,32 @@ function myfunc2(){
   type: "POST",
   url: "/qrcodes",  
   data: {text: ip}
-  return false;
  });
 }
-function myfunc3() {
-   alert("hhesl");
-}
+
+// for spinner
+
+$(function(){
+
+    $('.spinner .btn:first-of-type').on('click', function() {
+      var btn = $(this);
+      var input = btn.closest('.spinner').find('input');
+      if (input.attr('max') == undefined || parseInt(input.val()) < parseInt(input.attr('max'))) {    
+        input.val(parseInt(input.val(), 10) + 1);
+      } else {
+        btn.next("disabled", true);
+      }
+    });
+    $('.spinner .btn:last-of-type').on('click', function() {
+      var btn = $(this);
+      var input = btn.closest('.spinner').find('input');
+      if (input.attr('min') == undefined || parseInt(input.val()) > parseInt(input.attr('min'))) {    
+        input.val(parseInt(input.val(), 10) - 1);
+      } else {
+        btn.prev("disabled", true);
+      }
+    });
+
+})
+
+// popup form
