@@ -5,9 +5,18 @@ class Api::InventoriesController < ApplicationController
          for i in 0...count
 		    ma_thiet_bi = params[:array_of_device][i][:ma_thiet_bi]
 		    so_luong_thuc_te = params[:array_of_device][i][:so_luong_thuc_te]
+		    so_luong_thiet_bi_binh_thuong = params[:array_of_device][i][:so_luong_thiet_bi_binh_thuong]
+		    so_luong_thiet_bi_hong = params[:array_of_device][i][:so_luong_thiet_bi_hong]
+		    so_luong_thiet_bi_thanh_li = params[:array_of_device][i][:so_luong_thiet_bi_thanh_li]
 		    ghi_chu = params[:array_of_device][i][:ghi_chu]
-		    phong_thuc_hanh.kiem_ke.create(ma_thiet_bi: ma_thiet_bi, so_luong_thuc_te: so_luong_thuc_te, 
-		   	                           ghi_chu: ghi_chu, thoi_gian: Time.now)
+
+		    phong_thuc_hanh.kiem_ke.create(ma_thiet_bi: ma_thiet_bi, 
+		    	                           so_luong_thuc_te: so_luong_thuc_te,
+		    	                           so_luong_thiet_bi_binh_thuong: so_luong_thiet_bi_binh_thuong,
+		    	                           so_luong_thiet_bi_hong: so_luong_thiet_bi_hong,
+                                           so_luong_thiet_bi_thanh_li: so_luong_thiet_bi_thanh_li,
+		   	                               ghi_chu: ghi_chu,
+		   	                               thoi_gian:Time.now)
 		   # Time.now.strftime("%d/%m/%Y %H:%M")
 		 end
 	end

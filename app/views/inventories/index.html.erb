@@ -3,21 +3,25 @@
         <div class="container-fluid">
             <div class="row" id="main" >
                 <div class="col-sm-12 col-md-12 well" id="content">
-                    <h2 class="text-center">Chi Tiết Kiểm Kê</h2>
                     <div class="table-responsive">  
-                      hehe        
                         <table class="table table-bordered table-hover">
-                            <thead>
+                            <thead id="table-header">
                               <tr>
-                                <th>#</th>
-                                <th>Tên thiết bị</th>
-                                <th>Mã thiết bị</th>
-                                <th>Đơn vị tính</th>
-                                <th>Số lượng thực tế</th>
-                                <th>Ghi chú</th>
-                                <th>Nơi đặt để</th>
-                                <th>Thời Gian</th>
-                                <th>Hành động</th>
+                                <th rowspan="2" id="single-header" >#</th>
+                                <th rowspan="2" id="single-header">Tên thiết bị</th>
+                                <th rowspan="2" id="single-header">Mã thiết bị</th>
+                                <th rowspan="2" id="single-header">Đơn vị tính</th>
+                                <th rowspan="2" id="single-header">Số lượng thực tế</th>
+                                <th rowspan="2" id="single-header">Ghi chú</th>
+                                <th rowspan="2" id="single-header">Nơi đặt để</th>
+                                <th rowspan="2" id="single-header">Thời Gian</th>
+                                <th colspan="3" style="text-align: center; vertical-align: middle;">Tình trạng</th>
+                                <th rowspan="2" id="single-header">Hành động</th>
+                              </tr>
+                              <tr>
+                                <td>Bình thường</td>
+                                <td>Hỏng</td>
+                                <td>Xin thanh lí</td>
                               </tr>
                            </thead>
                            <tbody>
@@ -26,13 +30,16 @@
                            <% @thiet_bi.each do |device| %>
                            <tr>
                                <td><%= i+=1 %></td>
-                               <td><%= get_device_by_id(device.ma_thiet_bi).ten_thiet_bi %></td>
+                               <td>thiet bi nhua</td>
                                <td><%= device.ma_thiet_bi %></td>
                                <td></td>
                                <td><%= device.so_luong_thuc_te %></td>
                                <td><%= device.ghi_chu %></td>
                                <td></td>
                                <td><%= device.thoi_gian %></td>
+                               <td></td>
+                               <td></td>
+                               <td></td>
                                <td class="text-center"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></td>
                            </tr>
                            <% end %>
@@ -47,3 +54,4 @@
         </div>
 <!-- /.container-fluid -->
 </div>
+

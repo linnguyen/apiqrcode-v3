@@ -18,4 +18,5 @@ Rails.application.routes.draw do
  get 'statistics/time/', to: 'statistics#show_by_time'
  get 'statistics/room/', to: 'statistics#show_by_room'
  match 'search(/:search)', :to => 'inventories#search', :as => :search, via: [:get, :post]
+ resources :materials, only: [:new]
 end
