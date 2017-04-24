@@ -63,7 +63,7 @@
                         <li data-toggle="collapse" data-target="#submenu1_1" aria-expanded="false"><a href="#"><i class="fa fa-angle-right"></i> Theo Tháng</a>
                            <ul class="nav collapse"  id="submenu1_1" role="menu" aria-labelledby="btn-1" >
                            <% get_list_day.each do |d| %>
-                            <li><%= link_to "Tháng "+d.month.to_s+","+d.year.to_s, statistics_time_path(:month => d.month, :year => d.year) %></li>
+                            <li><%= link_to d %></li>
                             <% end %>
                            </ul>
                         </li>

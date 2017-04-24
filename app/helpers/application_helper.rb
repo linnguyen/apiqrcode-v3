@@ -9,10 +9,12 @@ module ApplicationHelper
 	end
 
 	def get_list_day
-		@days= []
-		@inventories = KiemKe.select(:thoi_gian).distinct
-		@inventories.each do |kk|
-			@day << kk.thoi_gian
+		if KiemKe.all.count != 0
+			@days= []
+			@time = KiemKe.all.map { |d| d.thoi_gian.strftime('Tháng %m, %Y') }.uniq
+			@time.each do |t|
+				@days << t
+			end
 		end
 		return @days
 	end
