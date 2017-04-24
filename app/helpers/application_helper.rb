@@ -11,8 +11,9 @@ module ApplicationHelper
 	def get_list_day
 		@days=[]
 		@inventories = KiemKe.all
+		@days << @inventories[0].thoi_gian
 		count = KiemKe.all.count
-		for i in 0...count
+		for i in 1...count
 			if @inventories[i].thoi_gian.year == @inventories[i-1].thoi_gian.year
 			   if @inventories[i].thoi_gian.month == @inventories[i-1].thoi_gian.month
 			   	  next
@@ -35,7 +36,7 @@ module ApplicationHelper
 	end
 
 	def get_difference_quantity
-
+        
 	end
 
 	def get_device_by_id thiet_bi_id
