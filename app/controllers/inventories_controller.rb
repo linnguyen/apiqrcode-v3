@@ -3,7 +3,6 @@ class InventoriesController < ApplicationController
 	def index
 		@thiet_bi = KiemKe.search(params[:search]).paginate(page: params[:page], :per_page => 8)
         # render json: get_list_day
-         # byebug
 	end
 	
 	def search      
