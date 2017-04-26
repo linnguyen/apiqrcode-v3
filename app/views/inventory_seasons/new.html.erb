@@ -1,0 +1,28 @@
+<div id="page-wrapper">
+        <div class="container-fluid">
+            <div class="row" id="main" >
+                <div class="col-sm-12 col-md-12 well" id="content">
+
+                    <div class="col-sm-10">
+                        <div class="form-area">  
+                                 <h3 style="margin-bottom: 25px; text-align: center;">Form thêm đợt kiểm kê</h3>
+                                 <%= form_for @inventory_season, url:inventory_seasons_path ,html: {class: "form-horizontal",multipart: true} do |f| %>
+                                  <div class="form-group">
+                                      <div class="col-sm-12">
+                                         <label>Tên đợt kiểm kê</label>
+                                         <%= f.text_field :ten,class: "form-control",id: "name",placeholder: "Điền tên đợt" %>
+                                      </div>
+                                  </div>
+                                  <div class="form-group">
+                                     <div class="col-sm-12" style="margin-top: 10px;">
+                                       <%= f.submit "Thêm đợt", class: "btn btn-primary pull-right",id: "btnMaterialInput" %>
+                                     </div>
+                                  </div>
+                                <% end %>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+ </div>

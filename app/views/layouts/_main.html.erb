@@ -53,6 +53,11 @@
              <ul class="nav navbar-nav side-nav">
                 <% if is_admin? %>
                 <li>
+                    <%= link_to new_inventory_season_path do %>
+                    <i class="fa fa-fw fa-user-plus"></i>  TẠO ĐỢT KIỂM KÊ
+                    <% end %>
+                </li>
+                <li>
                     <%= link_to inventories_path do %>
                     <i class="fa fa-fw fa-user-plus"></i> KIỂM KÊ
                     <% end %>
@@ -60,7 +65,7 @@
                 <li>
                     <a href="#" data-toggle="collapse" data-target="#submenu1" aria-expanded="false"><i class="fa fa-fw fa-star"></i> THỐNG KÊ <i class="fa fa-fw fa-angle-down pull-right"></i></a>
                     <ul class="nav collapse" id="submenu1" role="menu" aria-labelledby="btn-1" >
-                        <li data-toggle="collapse" data-target="#submenu1_1" aria-expanded="false"><a href="#"><i class="fa fa-angle-right"></i> Theo Tháng</a>
+                        <li data-toggle="collapse" data-target="#submenu1_1" aria-expanded="false"><a href="#"><i class="fa fa-angle-right"></i> Theo Năm</a>
                            <ul class="nav collapse"  id="submenu1_1" role="menu" aria-labelledby="btn-1" >
                            <% get_list_day.each do |d| %>
                             <li><%= link_to "Tháng "+d, statistics_time_path(:time => d) %></li>
@@ -74,6 +79,7 @@
                             <% end %>
                            </ul>
                         </li>
+                        <li><a href="#"><i class="fa fa-angle-right"></i> Thông Kê Theo Đợt</a></li>
                         <li><a href="#"><i class="fa fa-angle-right"></i> Thống Kê Theo Danh Mục Thiết Bị</a></li>
                     </ul>
                 </li>
