@@ -6,6 +6,7 @@ Rails.application.routes.draw do
  	get 'device_informations/:qrcode' => 'device_informations#show_info'
  	get 'lab_rooms' => 'laboratories#index'
     get 'devices/:lab_room_id' => 'laboratories#get_device_by_labroom'
+    get 'inventory_seasons' => 'inventory_seasons#index'
  	post 'inventories' => 'inventories#create'
  end
  match '/qrcodes' => 'qrcodes#generate', via: [:get, :post]
