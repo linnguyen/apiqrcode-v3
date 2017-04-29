@@ -133,7 +133,7 @@ CREATE TABLE `tb_chi_tiet_thiet_bi_xuat` (
 
 LOCK TABLES `tb_chi_tiet_thiet_bi_xuat` WRITE;
 /*!40000 ALTER TABLE `tb_chi_tiet_thiet_bi_xuat` DISABLE KEYS */;
-INSERT INTO `tb_chi_tiet_thiet_bi_xuat` VALUES (1,'US2017MTM00011','X019293',NULL);
+INSERT INTO `tb_chi_tiet_thiet_bi_xuat` VALUES (1,'TL2017MT1','X12342',NULL);
 /*!40000 ALTER TABLE `tb_chi_tiet_thiet_bi_xuat` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -219,6 +219,30 @@ INSERT INTO `tb_don_vi` VALUES (1,'Cơ Khí',NULL),(2,'Cơ Điện Lạnh',NULL)
 UNLOCK TABLES;
 
 --
+-- Table structure for table `tb_dot_kiem_ke`
+--
+
+DROP TABLE IF EXISTS `tb_dot_kiem_ke`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tb_dot_kiem_ke` (
+  `id_dot` int(11) NOT NULL AUTO_INCREMENT,
+  `ten` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id_dot`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tb_dot_kiem_ke`
+--
+
+LOCK TABLES `tb_dot_kiem_ke` WRITE;
+/*!40000 ALTER TABLE `tb_dot_kiem_ke` DISABLE KEYS */;
+INSERT INTO `tb_dot_kiem_ke` VALUES (1,'Cuối năm'),(2,'Đột xuất'),(3,'Thường xuyên'),(5,'Giờ vàng'),(6,'Giờ chốt'),(7,'Giờ bất thình lình');
+/*!40000 ALTER TABLE `tb_dot_kiem_ke` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `tb_kho`
 --
 
@@ -262,8 +286,9 @@ CREATE TABLE `tb_kiem_ke` (
   `ghi_chu` text,
   `ma_pth` varchar(10) DEFAULT NULL,
   `thoi_gian` date DEFAULT NULL,
+  `id_dot` int(11) DEFAULT NULL,
   PRIMARY KEY (`ma_kiem_ke`)
-) ENGINE=InnoDB AUTO_INCREMENT=129 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=136 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -272,7 +297,7 @@ CREATE TABLE `tb_kiem_ke` (
 
 LOCK TABLES `tb_kiem_ke` WRITE;
 /*!40000 ALTER TABLE `tb_kiem_ke` DISABLE KEYS */;
-INSERT INTO `tb_kiem_ke` VALUES (125,'TB00001',90,20,70,0,'can xem lai cac cach dung de han che hu hong','D110','2017-04-25'),(126,'TB00004',30,28,2,0,'','D110','2017-04-25'),(127,'TB00001',2,2,1,-1,'','D110','2017-04-25'),(128,'TB00004',1,-1,-1,-1,'','D110','2017-04-25');
+INSERT INTO `tb_kiem_ke` VALUES (125,'TB00001',90,20,70,0,'can xem lai cac cach dung de han che hu hong','D110','2017-04-25',NULL),(126,'TB00004',30,28,2,0,'','D110','2017-04-25',NULL),(127,'TB00001',2,2,1,-1,'','D110','2017-04-25',NULL),(128,'TB00004',1,-1,-1,-1,'','D110','2017-04-25',NULL),(129,'TB00001',12,-1,-1,-1,'','D110','2017-04-27',2),(130,'TB00001',14,5,3,1,'can gi do de lam cho xong cho roi','D110','2017-04-27',2),(131,'TB00001',13,-1,-1,-1,'chua biet duong','D110','2017-04-27',2),(132,'TB00004',15,12,0,-1,'sdfsf','D110','2017-04-27',2),(133,'TB00001',3,1,1,2,'sq','D110','2017-04-29',3),(134,'TB00001',12,4,6,1,'dwsfwf','D110','2017-04-29',3),(135,'TB00004',32,-1,-1,-1,'fsfsf','D110','2017-04-29',3);
 /*!40000 ALTER TABLE `tb_kiem_ke` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -516,4 +541,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-04-26 10:09:31
+-- Dump completed on 2017-04-29 14:02:13
