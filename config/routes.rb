@@ -7,7 +7,8 @@ Rails.application.routes.draw do
  	get 'lab_rooms' => 'laboratories#index'
     get 'devices/:lab_room_id' => 'laboratories#get_device_by_labroom'
     get 'inventory_seasons' => 'inventory_seasons#index'
- 	post 'inventories' => 'inventories#create'
+ 	post 'inventories/room' => 'inventories#create_by_room'
+ 	post 'inventories/device' => 'inventories#create_by_device'
  end
  match '/qrcodes' => 'qrcodes#generate', via: [:get, :post]
  root 'homes#index'
@@ -19,6 +20,6 @@ Rails.application.routes.draw do
  get 'statistics/time/', to: 'statistics#show_by_time'
  get 'statistics/room/', to: 'statistics#show_by_room'
  match 'search(/:search)', :to => 'inventories#search', :as => :search, via: [:get, :post]
- resources :materials, only: [:new]
+ resources :materials
  resources :inventory_seasons
 end

@@ -1,5 +1,5 @@
 class Api::InventoriesController < ApplicationController
-	def create
+	def create_by_room
 		 phong_thuc_hanh = PhongThucHanh.find_by(ma_pth: params[:lab_room_id])
 		 count = params[:array_of_device].size
 		 id_dot = params[:id_dot]
@@ -21,5 +21,24 @@ class Api::InventoriesController < ApplicationController
 		   	                               id_dot: id_dot)
 		   # Time.now.strftime("%d/%m/%Y %H:%M")
 		 end
+	end
+	def create_by_device
+		phong_thuc_hanh = PhongThucHanh.find_by(ma_pth: params[:lab_room_id])
+		id_dot = params[:id_dot]
+		ma_thiet_bi = params[:device][:ma_thiet_bi]
+		so_luong_thuc_te = params[:device][:so_luong_thuc_te]
+		so_luong_thiet_bi_binh_thuong = params[:device][:so_luong_thiet_bi_binh_thuong]
+		so_luong_thiet_bi_hong = params[:device][:so_luong_thiet_bi_hong]
+		so_luong_thiet_bi_thanh_li = params[:device][:so_luong_thiet_bi_thanh_li]
+		ghi_chu = params[:device][:ghi_chu]
+		phong_thuc_hanh.kiem_ke.create(ma_thiet_bi: ma_thiet_bi, 
+		    	                           so_luong_thuc_te: so_luong_thuc_te,
+		    	                           so_luong_thiet_bi_binh_thuong: so_luong_thiet_bi_binh_thuong,
+		    	                           so_luong_thiet_bi_hong: so_luong_thiet_bi_hong,
+                                           so_luong_thiet_bi_thanh_li: so_luong_thiet_bi_thanh_li,
+		   	                               ghi_chu: ghi_chu,
+		   	                               thoi_gian:Time.now,
+		   	                               id_dot: id_dot)
+		# ma_thiet_bi = params[:device][]
 	end
 end
