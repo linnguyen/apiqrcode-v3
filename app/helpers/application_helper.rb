@@ -44,4 +44,8 @@ module ApplicationHelper
 
         # attual_amount = 
     end
+
+    def get_staff_by_id ma_nql
+    	staff = NhanVien.find_by(ma_nql: ma_nql)
+    end
 end

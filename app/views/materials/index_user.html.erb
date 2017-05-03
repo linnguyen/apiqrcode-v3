@@ -1,0 +1,52 @@
+<%= provide(:title, "Đề Xuất Phôi Liệu") %>
+<div id="page-wrapper">
+        <div class="container-fluid">
+            <div class="row" id="main" >
+                <div class="col-sm-12 col-md-12 well" id="content">
+                    <div class="text-inline">
+                    </div>
+                    <div class="table-responsive">          
+                        <table class="table table-bordered table-hover">
+                            <thead id="table-header">
+                              <tr>
+                                <th>#</th>
+                                <th>ID</th>
+                                <th>Môn</th>
+                                <th>Ngày đề xuất</th>
+                                <th>Tổng số học sinh</th>
+                                <th>Lí do</th>
+                                <th>Đã xác nhận</th>
+                                <th>Trường phản hồi</th>
+                                <th>Trạng thái</th>
+                                <th>Hành động</th>
+                              </tr>
+                           </thead>
+                           <tbody>
+                           <% i=0 %>
+                           <% if @dexuatphoilieu.present? %>
+                            <% @dexuatphoilieu.each do |s| %>
+                               <tr>
+                                 <td><%= i=i+1 %></td>
+                                 <td><%= s.ma_dxpl %></td>
+                                 <td><%= s.mon %></td>
+                                 <td><%= s.thoi_gian %></td>
+                                 <td><%= s.tong_so_hoc_sinh %></td>
+                                 <td><%= s.li_do %></td>
+                                 <td class="text-center"><p style="color: blue;">OK</p></td>
+                                 <td></td>
+                                 <td><p style="color: blue;">Pending</p></td>
+                                 <td class="text-center"><i class="fa fa-times" aria-hidden="true"></i></td>
+                               </tr>
+                            <% end %>
+                            <% else %>
+                                <h4>Không tìm thấy dữ liệu</h4>
+                            <% end %>
+                          </tbody>
+                       </table>
+                   </div>
+               </div>
+           </div>
+    <!-- /.row -->
+        </div>
+<!-- /.container-fluid -->
+</div>

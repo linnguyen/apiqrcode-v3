@@ -1,6 +1,7 @@
 class NhanVien < ApplicationRecord
 	self.table_name = "tb_nhan_vien"
 	has_many :phieu_xuat , foreign_key: "ma_nql", class_name: "PhieuXuat"
+  has_many :de_xuat_phoi_lieu , foreign_key: "ma_nql", class_name: "DeXuatPhoiLieu"
 	belongs_to :phong_thuc_hanh, foreign_key: "ma_pth", class_name: "PhongThucHanh"
     VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
     validates :ho_ten, presence: true, length: {maximum: 50}

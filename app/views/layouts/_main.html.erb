@@ -89,7 +89,7 @@
                     <% end %>
                 </li>
                 <li>
-                    <%= link_to qrcodes_path do %>
+                    <%= link_to admin_materials_path do %>
                     <i class="fa fa-fw fa-user-plus"></i>  QUẢN LÍ PHÔI LIỆU
                     <% end %>
                 </li>
@@ -102,7 +102,10 @@
                              <i class="fa fa-address-book-o"></i> Đề Xuất
                            <% end %>
                          </li>
-                        <li data-toggle="collapse" data-target="#submenu1_1" aria-expanded="false"><a href="#"><i class="fa fa-address-book-o"></i> Kết Quả Đề Xuất</a>
+                        <li data-toggle="collapse" data-target="#submenu1_1" aria-expanded="false">
+                           <%= link_to user_materials_path do %>
+                             <i class="fa fa-address-book-o"></i> Kết Quả Đề Xuất
+                           <% end %>
                         </li>
                     </ul>
                 </li>
@@ -111,7 +114,7 @@
         </div>
     </nav>
     <div class="title">
-       <a class="table-title">Chi Tiết Kiểm Kê</a>
+       <a class="table-title"><%= full_title(yield(:title)) %></a>
     </div>
     <!-- /.navbar-collapse -->
 

@@ -5,7 +5,7 @@
        <div class="col-sm-10">
         <div class="form-area">  
          <h3 style="margin-bottom: 25px; text-align: center;">Form đề xuất phôi liệu</h3>
-         <%= form_for(:material,url: materials_path,:html => {:id => "formne"}) do |f| %>
+         <%= form_for(:material,url: materials_path,:html => {:id => "formne"}, remote: true) do |f| %>
          <div class="form-group">
           <div class="col-sm-6">
            <label>Môn</label>
@@ -24,8 +24,8 @@
       </div>
       <div class="form-group">
         <div class="col-sm-12">
-         <label>Lí do</label>
-         <textarea style="border-radius: 0px;" class="form-control" type="textarea" id="message" maxlength="140" rows="2"></textarea> 
+         <label>Lí do</label> 
+         <%= f.text_area :lido, class: 'form-control', style: 'border-radius: 0px;', id: "message", maxlength: "140", rows: "2" %>
        </div>
      </div>
      <% end %>
@@ -135,6 +135,7 @@ aria-hidden="true">
 </div>
 </div>
 </div>
+<script type="text/javascript" src=""></script>
 <script type="text/javascript">
 
  $('#btnMaterialInput').on('click', function(){
@@ -164,32 +165,34 @@ aria-hidden="true">
       // table.appendChild(rows);
     }
 
-  function myfuncdata(){
+function myfuncdata(){
+var array = [];
+var headers = ['#', 'ten_vat_tu_phoi_lieu', 'qui_cach', 'chung_loai', 'xuat_xu', 'don_vi_tinh', 'tong_so', 'da_co', 'mua_moi', 'hanh_dong'];
 
-var table = document.getElementById("table-result");
-var arrMaterials = [];
-  for ( var i = 1; i < table.rows.length; i++ ) {
-      arrMaterials.push({
-          category: table.rows[i].cells[1].innerHTML
-      });
-  }
+$('#table-result tr').has('td').each(function() {
+    var arrayItem = {};
+    $('td', $(this)).each(function(index, item) {
+        arrayItem[headers[index]] = $(item).html();
+    });
+    array.push(arrayItem);
+  });
 
-  // var arrMaterials = [];
-
-  // $("table#table-result tr").each(function() {
-  //   var arrayOfThisRow = [];
-  //   var tableData = $(this).find('td');
-  //   if (tableData.length > 0) {
-  //     tableData.each(function() { arrayOfThisRow.push($(this).text()); });
-  //     arrMaterials.push(arrayOfThisRow);
-  //   }
-  // });
-
-  $.ajax({
-      type: "POST",
+tabledata = JSON.parse(JSON.stringify(array));
+$.ajax({
       url: "/materials",
-      data:{arrMaterials}
-     });
+      type: "POST",
+      dataType: 'json',
+      //contentType: 'application/json; charset=utf-8',
+      data: 
+         {
+          'duLieuDeXuat': tabledata,
+          'mon': $('#name').val(),
+          'li_do': $('#message').val()
+         }
+     }).done(function(data){
+      alert('ccccc');
+      window.location.href="/materials/";
+  });
 }
 
 function submitForm(){
@@ -197,8 +200,8 @@ function submitForm(){
 }
 
 function submitData(){
-  submitForm();
-  myfuncdata();
+ myfuncdata();
+  //submitForm();
 }
 
 </script>
