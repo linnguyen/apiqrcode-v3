@@ -30,6 +30,24 @@
                                  <td><%= i=i+1 %></td>
                                  <td><%= s.ma_dxpl %></td>
                                  <td><%= (get_staff_by_id s.ma_nql).ho_ten %></td>
+                                 <td><%= s.mon %></td>
+                                 <td><%= s.thoi_gian %></td>
+                                 <td><%= s.tong_so_hoc_sinh %></td>
+                                 <td><%= s.li_do %></td>
+                                 <td class="text-center"><i class="fa fa-info-circle" aria-hidden="true"></i></td>
+                                 <% if s.da_xu_li? %>
+                                 <td><p style="color: blue;">Đã xử lí</p></td>
+                                 <% else %>
+                                 <td><p style="color: blue;">Đang chờ</p></td>
+                                 <% end %>
+                                 <% if s.ok!
+                                    bool = true 
+                                    else 
+                                    bool = false
+                                    byebug
+                                    end %>
+                                 <td class="text-center"><%= check_box_tag 'com', s.ma_dxpl, false , class: "confirm" %></td>
+                                 <td class="text-center"><i class="fa fa-comment" aria-hidden="true"></i></td>
                                </tr>
                                <% end %>
                            <% else %>
@@ -44,3 +62,19 @@
         </div>
 <!-- /.container-fluid -->
 </div>
+<script type="text/javascript">
+
+  $(".confirm").on('change', function(){
+    //alert('eedkd');
+    var id = this.value;
+    var bool = this.checked ? 1 : 0;
+    $.ajax({
+      url: '/material_confirm',
+      type: 'POST',
+      data: { 
+              "bool": bool,
+              "id": id
+            }
+    });
+ });
+</script>

@@ -1,11 +1,11 @@
+<%= provide(:title, "Đề Xuất Phôi Liệu") %>
 <div id="page-wrapper">
   <div class="container-fluid">
     <div class="row" id="main" >
       <div class="col-sm-12 col-md-12 well" id="content">
-       <div class="col-sm-10">
-        <div class="form-area">  
-         <h3 style="margin-bottom: 25px; text-align: center;">Form đề xuất phôi liệu</h3>
-         <%= form_for(:material,url: materials_path,:html => {:id => "formne"}, remote: true) do |f| %>
+       <div class="col-sm-12">
+        <div class="form-area"> 
+          <%= form_for(:material,url: materials_path,:html => {:id => "formne"}, remote: true) do |f| %>
          <div class="form-group">
           <div class="col-sm-6">
            <label>Môn</label>
@@ -14,25 +14,20 @@
          <div class="col-sm-6">
            <label>Tổng số học sinh</label>
            <div class="input-group spinner">
-            <input type="text" class="form-control" value="42" min="40" max="45">
-            <div class="input-group-btn-vertical">
-              <button class="btn btn-default" type="button"><i class="fa fa-caret-up"></i></button>
-              <button class="btn btn-default" type="button"><i class="fa fa-caret-down"></i></button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="form-group">
-        <div class="col-sm-12">
-         <label>Lí do</label> 
-         <%= f.text_area :lido, class: 'form-control', style: 'border-radius: 0px;', id: "message", maxlength: "140", rows: "2" %>
+             <%= f.number_field :number, min: 1, max: 50, value: 30, class: 'form-control', id: "number" %>
+           </div>
+         </div>
+         </div>
+         <div class="form-group">
+          <div class="col-sm-10">
+           <label>Lí do</label> 
+           <%= f.text_area :lido, class: 'form-control', style: 'border-radius: 0px;', id: "message", maxlength: "140", rows: "2" %>
+         </div>
+         </div>
+         <% end %>
        </div>
      </div>
-     <% end %>
    </div>
- </div>
-
-</div>
 </div>
 </div>
 </div>
@@ -187,10 +182,11 @@ $.ajax({
          {
           'duLieuDeXuat': tabledata,
           'mon': $('#name').val(),
-          'li_do': $('#message').val()
+          'li_do': $('#message').val(),
+          'tong_so_hoc_sinh': $('#number').val()
          }
      }).done(function(data){
-      alert('ccccc');
+      alert('Gửi thông tin đề xuất thành công');
       window.location.href="/user/materials/";
   });
 }

@@ -5,7 +5,8 @@ class MaterialsController < ApplicationController
 	def create
 		mon = params[:mon]
 		li_do = params[:li_do]
-		dxpl = current_user.de_xuat_phoi_lieu.create(mon: mon, li_do: li_do, thoi_gian: Time.now)
+		tong_so_hoc_sinh = params[:tong_so_hoc_sinh]
+		dxpl = current_user.de_xuat_phoi_lieu.create(mon: mon, li_do: li_do, tong_so_hoc_sinh: tong_so_hoc_sinh, thoi_gian: Time.now)
 
 		params[:duLieuDeXuat].each { |k,v|
 		 ten_vat_tu_phoi_lieu = v[:ten_vat_tu_phoi_lieu]
@@ -30,7 +31,34 @@ class MaterialsController < ApplicationController
 	def index_user
 		@dexuatphoilieu = current_user.de_xuat_phoi_lieu
 	end
+
 	def index_admin
 		@dexuatphoilieu = DeXuatPhoiLieu.all
+	end
+
+	def destroy
+	    DeXuatPhoiLieu.find(params[:id]).destroy
+	    # flash[:success] = "User deleted"
+	    redirect_to user_materials_url
+	end
+
+	def confirm
+		bool = params[:bool]
+		ma_dxpl = params[:id]
+		dxpl = DeXuatPhoiLieu.find(ma_dxpl)
+		# byebug
+		if bool == "1"
+			dxpl.da_xu_li!
+			dxpl.ok!
+		else
+			dxpl.dang_cho!
+			dxpl.non_ok!
+		end
+
+		# truong_phan_hoi = params[:message]
+		# dxpl = DeXuatPhoiLieu.find(ma_dxpl)
+		# dxpl.update_attributes(truong_phan_hoi: truong_phan_hoi)
+		# dxpl.da_xu_li!
+
 	end
 end

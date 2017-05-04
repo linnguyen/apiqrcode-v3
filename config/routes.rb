@@ -21,6 +21,7 @@ Rails.application.routes.draw do
  get 'statistics/room/', to: 'statistics#show_by_room'
  match 'search(/:search)', :to => 'inventories#search', :as => :search, via: [:get, :post]
  resources :materials
+ post '/material_confirm', to: 'materials#confirm'
  get 'user/materials', to: 'materials#index_user'
  get 'admin/materials', to: 'materials#index_admin'
  resources :inventory_seasons

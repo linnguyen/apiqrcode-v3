@@ -27,15 +27,21 @@
                             <% @dexuatphoilieu.each do |s| %>
                                <tr>
                                  <td><%= i=i+1 %></td>
-                                 <td><%= s.ma_dxpl %></td>
+                                 <td>DXPL_<%= s.ma_dxpl %></td>
                                  <td><%= s.mon %></td>
                                  <td><%= s.thoi_gian %></td>
                                  <td><%= s.tong_so_hoc_sinh %></td>
                                  <td><%= s.li_do %></td>
+                                 <% if s.ok! %>
                                  <td class="text-center"><p style="color: blue;">OK</p></td>
+                                 <% else %>
+                                  <td class="text-center"></td>
+                                 <% end %>
                                  <td></td>
                                  <td><p style="color: blue;">Pending</p></td>
-                                 <td class="text-center"><i class="fa fa-times" aria-hidden="true"></i></td>
+                                 <td class="text-center"><%= link_to material_path(s), method: :delete, data: {confirm: "Bạn có chắc chắn xóa không?" } do %>
+                                  <i class="fa fa-times" aria-hidden="true"></i>
+                                 <% end %></td>
                                </tr>
                             <% end %>
                             <% else %>
