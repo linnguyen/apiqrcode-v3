@@ -6,7 +6,8 @@ class InventorySeasonsController < ApplicationController
 	def create
        @inventory_season=DotKiemKe.new(season_params)
        if @inventory_season.save
-       	# message here
+       	 @inventory_season = DotKiemKe.all
+       	 render 'new'
        else
        	render 'new'
        end
