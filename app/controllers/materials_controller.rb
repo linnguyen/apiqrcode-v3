@@ -43,22 +43,29 @@ class MaterialsController < ApplicationController
 	end
 
 	def confirm
-		bool = params[:bool]
-		ma_dxpl = params[:id]
-		dxpl = DeXuatPhoiLieu.find(ma_dxpl)
+		 bool = params[:bool]
+		 ma_dxpl = params[:id]
+		 dxpl = DeXuatPhoiLieu.find(ma_dxpl)
 		# byebug
 		if bool == "1"
-			dxpl.da_xu_li!
-			dxpl.ok!
+			dxpl.update_attributes(xac_nhan: 1)
+			dxpl.update_attributes(trang_thai: 1)
 		else
-			dxpl.dang_cho!
-			dxpl.non_ok!
+			dxpl.update_attributes(xac_nhan: 0)
+			dxpl.update_attributes(trang_thai: 0)
 		end
-
-		# truong_phan_hoi = params[:message]
-		# dxpl = DeXuatPhoiLieu.find(ma_dxpl)
-		# dxpl.update_attributes(truong_phan_hoi: truong_phan_hoi)
-		# dxpl.da_xu_li!
-
 	end
+    
+    def message
+    	truong_phan_hoi = params[:message]
+    	ma_dxpl = params[:id]
+		dxpl = DeXuatPhoiLieu.find(ma_dxpl)
+		dxpl.update_attributes(truong_phan_hoi: truong_phan_hoi)
+		dxpl.update_attributes(trang_thai: 1)
+    end
+
+    def material_details
+    	@ma_dxpl = params[:id]
+    	@chitietdexuatphoilieu = ChiTietDeXuatPhoiLieu.where('ma_dxpl = ?', @ma_dxpl)
+    end
 end

@@ -32,16 +32,26 @@
                                  <td><%= s.thoi_gian %></td>
                                  <td><%= s.tong_so_hoc_sinh %></td>
                                  <td><%= s.li_do %></td>
-                                 <% if s.ok! %>
+                                 <% if s.xac_nhan == 1 %>
                                  <td class="text-center"><p style="color: blue;">OK</p></td>
                                  <% else %>
                                   <td class="text-center"></td>
                                  <% end %>
-                                 <td></td>
-                                 <td><p style="color: blue;">Pending</p></td>
-                                 <td class="text-center"><%= link_to material_path(s), method: :delete, data: {confirm: "Bạn có chắc chắn xóa không?" } do %>
+                                 <td><%= s.truong_phan_hoi %></td>
+                                 <% if s.trang_thai == 1 %>
+                                 <td><p style="color: blue;">Đã xử lí</p></td>
+                                 <% else %>
+                                  <td><p style="color: blue;">Đang chờ</p></td>
+                                  <% end %>
+                                 <% if s.trang_thai == 1 %>
+                                  <td class="text-center"><%= button_to material_path(s), method: :delete, data: {confirm: "Bạn có chắc chắn xóa không?" }, disabled: true, style: "border: none;" do %>
                                   <i class="fa fa-times" aria-hidden="true"></i>
                                  <% end %></td>
+                                 <% else %>
+                                  <td class="text-center"><%= button_to material_path(s), method: :delete, data: {confirm: "Bạn có chắc chắn xóa không?" }, disabled: false, style: "border: none; color: #428BCA;" do %>
+                                  <i class="fa fa-times" aria-hidden="true"></i>
+                                 <% end %></td>
+                                 <% end %>
                                </tr>
                             <% end %>
                             <% else %>

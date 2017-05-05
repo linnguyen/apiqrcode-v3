@@ -22,7 +22,9 @@ Rails.application.routes.draw do
  match 'search(/:search)', :to => 'inventories#search', :as => :search, via: [:get, :post]
  resources :materials
  post '/material_confirm', to: 'materials#confirm'
+ post '/material_message', to: 'materials#message'
  get 'user/materials', to: 'materials#index_user'
  get 'admin/materials', to: 'materials#index_admin'
+ get 'material_details', to: 'materials#material_details'
  resources :inventory_seasons
 end
