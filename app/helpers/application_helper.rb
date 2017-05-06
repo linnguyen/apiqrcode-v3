@@ -11,13 +11,17 @@ module ApplicationHelper
 	def get_list_day
 		if KiemKe.all.count != 0
 			@days= []
-			@time = KiemKe.all.map { |d| d.thoi_gian.strftime('%m, %Y') }.uniq
-			@time.each do |t|
+			@time = KiemKe.all.map { |d| d.thoi_gian.strftime('%Y') }.uniq
+         	@time.each do |t|
 				@days << t
 			end
 		end
 		return @days
 	end
+
+	def get_list_day_by_room ma_pth
+		KiemKe.where('ma_pth = ? and YEAR(thoi_gian) = ?', ma_pth, Time.now.year).order('thoi_gian DESC').all.map { |d| d.thoi_gian }.uniq
+    end
 
 	def get_list_room
 		@rooms =[]
@@ -25,6 +29,14 @@ module ApplicationHelper
 			@rooms << r
 		end
 		return @rooms
+	end
+
+	def get_list_iv_season
+		DotKiemKe.all
+	end
+
+	def get_iv_season_by_id id_dot
+		DotKiemKe.find_by(id_dot)
 	end
 
 	def get_device_by_id ma_thiet_bi

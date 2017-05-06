@@ -29,7 +29,7 @@
                                  <td><%= i=i+1 %></td>
                                  <td>DXPL_<%= s.ma_dxpl %></td>
                                  <td><%= s.mon %></td>
-                                 <td><%= s.thoi_gian %></td>
+                                 <td><%= s.thoi_gian.strftime('%d/%m/%Y %H:%M')%></td>
                                  <td><%= s.tong_so_hoc_sinh %></td>
                                  <td><%= s.li_do %></td>
                                  <% if s.xac_nhan == 1 %>

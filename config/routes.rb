@@ -9,6 +9,8 @@ Rails.application.routes.draw do
     get 'inventory_seasons' => 'inventory_seasons#index'
  	post 'inventories/room' => 'inventories#create_by_room'
  	post 'inventories/device' => 'inventories#create_by_device'
+ 	post 'inventories/latest_inventory_for_device' => 'inventories#check_latest_inventory_per_device'
+ 	post 'inventories/latest_inventory_for_room' => 'inventories#check_latest_inventory_per_room'
  end
  match '/qrcodes' => 'qrcodes#generate', via: [:get, :post]
  root 'homes#index'

@@ -31,7 +31,7 @@
                                  <td>DXPL_<%= s.ma_dxpl %></td>
                                  <td><%= (get_staff_by_id s.ma_nql).ho_ten %></td>
                                  <td><%= s.mon %></td>
-                                 <td><%= s.thoi_gian %></td>
+                                 <td><%= s.thoi_gian.strftime('%d/%m/%Y %H:%M')%></td>
                                  <td><%= s.tong_so_hoc_sinh %></td>
                                  <td><%= s.li_do %></td>
                                  <td class="text-center"><%= link_to material_details_path(id: s.ma_dxpl) do %>
@@ -47,17 +47,12 @@
                                     else 
                                     bool = false
                                     end %>
-<<<<<<< HEAD
-                                 <td class="text-center"><%= check_box_tag 'com',s.ma_dxpl,bool, class: "confirm" %></td>
-                                 <td class="text-center"><i class="fa fa-comment" aria-hidden="true"></i></td>
-                               </tr>
-=======
-                                 <td class="text-center"><%= check_box_tag 'com', s.ma_dxpl, bool , class: "confirm" %></td>
+                                 <td class="text-center"><%= check_box_tag 'com',s.ma_dxpl,bool, class: "confirm" %></td>                      
                                  <td class="text-center"><%= button_tag(name: '',value: s.ma_dxpl,class: "btComment",style: "border: none;") do %>
                                   <i class="fa fa-comment" aria-hidden="true"></i>
                                  <% end %></td>
-                                 </tr>
->>>>>>> 4c604d1859182900651807c9aec1c7d33e3a7e45
+                                </tr>
+
                                <% end %>
                            <% else %>
                                 <h4>Không tìm thấy dữ liệu</h4>

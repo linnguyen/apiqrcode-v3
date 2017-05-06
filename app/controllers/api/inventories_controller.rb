@@ -19,8 +19,13 @@ class Api::InventoriesController < ApplicationController
 		   	                               ghi_chu: ghi_chu,
 		   	                               thoi_gian:Time.now,
 		   	                               id_dot: id_dot)
-		   # Time.now.strftime("%d/%m/%Y %H:%M")
+
+		 # Time.now.strftime("%d/%m/%Y %H:%M")
 		 end
+		 render :status => 200,
+                :json => { :success => true,
+                           :info => "Tất cả thông tin kiểm kê đã được lưu thành công. Chọn phòng thực hành khác để kiểm kê.",
+                           :data => "" }
 	end
 	def create_by_device
 		phong_thuc_hanh = PhongThucHanh.find_by(ma_pth: params[:lab_room_id])
@@ -41,4 +46,39 @@ class Api::InventoriesController < ApplicationController
 		   	                               id_dot: id_dot)
 		# ma_thiet_bi = params[:device][]
 	end
+
+	def check_latest_inventory_per_device 
+		ma_thiet_bi = params[:ma_thiet_bi]
+		latest_inventory = KiemKe.where("ma_thiet_bi= ? AND YEAR(thoi_gian) = ?", ma_thiet_bi, Time.now.year).order("thoi_gian desc").first        
+        byebug
+        if latest_inventory.nil?
+        	render :status => 200,
+                :json => { :success => true,
+                           :info => "",
+                           :data => "" }
+        else
+        	render :status => 200,
+                :json => { :success => true,
+                           :info => "Thiết bị này đã được thực hiện kiểm kê cách đây "+(Time.now.to_date - latest_inventory.thoi_gian.to_date).to_i.to_s+ " ngày trong đợt "+(get_iv_season_by_id latest_inventory.id_dot.to_s).ten.to_s+". Bạn có muốn tiếp tục thực hiện kiểm kê không?",
+                           :data => "" }
+
+        end
+    end
+    def check_latest_inventory_per_room 
+		ma_thiet_bi = params[:ma_pth]
+		latest_inventory = KiemKe.where("ma_thiet_bi= ? AND thoi_gian = ?", ma_pth,(get_list_day_by_room ma_pth).first)      
+        byebug
+        if latest_inventory.nil?
+        	render :status => 200,
+                :json => { :success => true,
+                           :info => "",
+                           :data => "" }
+        else
+        	render :status => 200,
+                :json => { :success => true,
+                           :info => "Thiết bị này đã được thực hiện kiểm kê cách đây "+(Time.now.to_date - latest_inventory.thoi_gian.to_date).to_i.to_s+ " ngày trong đợt "+(get_iv_season_by_id latest_inventory.id_dot.to_s).ten.to_s+". Bạn có muốn tiếp tục thực hiện kiểm kê không?",
+                           :data => "" }
+
+        end
+    end
 end
