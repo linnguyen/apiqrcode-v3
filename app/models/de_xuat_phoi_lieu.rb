@@ -5,8 +5,8 @@ class DeXuatPhoiLieu < ApplicationRecord
     enum trang_thai: [:dang_cho, :da_xu_li]
     enum xac_nhan: [:non_ok, :ok]
 
-    before_save :default_values
-    def default_values
-          self.xac_nhan ||= :non_ok
-    end
+    # before_save :default_values
+    # def default_values
+    #       self.xac_nhan ||= :non_ok
+    # end
 end

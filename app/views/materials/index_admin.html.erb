@@ -44,9 +44,8 @@
                                     bool = true 
                                     else 
                                     bool = false
-                                    byebug
                                     end %>
-                                 <td class="text-center"><%= check_box_tag 'com', s.ma_dxpl, false , class: "confirm" %></td>
+                                 <td class="text-center"><%= check_box_tag 'com',s.ma_dxpl,bool, class: "confirm" %></td>
                                  <td class="text-center"><i class="fa fa-comment" aria-hidden="true"></i></td>
                                </tr>
                                <% end %>
