@@ -28,26 +28,36 @@
                              <% @dexuatphoilieu.each do |s|%>
                                <tr>
                                  <td><%= i=i+1 %></td>
-                                 <td><%= s.ma_dxpl %></td>
+                                 <td>DXPL_<%= s.ma_dxpl %></td>
                                  <td><%= (get_staff_by_id s.ma_nql).ho_ten %></td>
                                  <td><%= s.mon %></td>
                                  <td><%= s.thoi_gian %></td>
                                  <td><%= s.tong_so_hoc_sinh %></td>
                                  <td><%= s.li_do %></td>
-                                 <td class="text-center"><i class="fa fa-info-circle" aria-hidden="true"></i></td>
-                                 <% if s.da_xu_li? %>
+                                 <td class="text-center"><%= link_to material_details_path(id: s.ma_dxpl) do %>
+                                  <i class="fa fa-info-circle" aria-hidden="true"></i>
+                                 <% end %></td>
+                                 <% if s.trang_thai == 1 %>
                                  <td><p style="color: blue;">Đã xử lí</p></td>
                                  <% else %>
                                  <td><p style="color: blue;">Đang chờ</p></td>
                                  <% end %>
-                                 <% if s.ok!
+                                 <% if s.xac_nhan == 1
                                     bool = true 
                                     else 
                                     bool = false
                                     end %>
+<<<<<<< HEAD
                                  <td class="text-center"><%= check_box_tag 'com',s.ma_dxpl,bool, class: "confirm" %></td>
                                  <td class="text-center"><i class="fa fa-comment" aria-hidden="true"></i></td>
                                </tr>
+=======
+                                 <td class="text-center"><%= check_box_tag 'com', s.ma_dxpl, bool , class: "confirm" %></td>
+                                 <td class="text-center"><%= button_tag(name: '',value: s.ma_dxpl,class: "btComment",style: "border: none;") do %>
+                                  <i class="fa fa-comment" aria-hidden="true"></i>
+                                 <% end %></td>
+                                 </tr>
+>>>>>>> 4c604d1859182900651807c9aec1c7d33e3a7e45
                                <% end %>
                            <% else %>
                                 <h4>Không tìm thấy dữ liệu</h4>
@@ -61,9 +71,62 @@
         </div>
 <!-- /.container-fluid -->
 </div>
-<script type="text/javascript">
 
-  $(".confirm").on('change', function(){
+<div class="modal fade" id="myModalMessage" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+aria-hidden="true">
+<div class="modal-dialog modal-lg">
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+        ×</button>
+        <h4 class="modal-title" id="myModalLabel">Phản Hồi</h4>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+         <div class="col-md-12">
+            <form role="form" class="form-horizontal">
+              <div class="form-group">
+                <div class="col-sm-12">
+                 <label>Phiếu Đề Xuất Phôi Liệu</label>
+                 <p style="font-style: bold;" id="maDXPL">DXPL_001</p>
+                 </div>
+                <div class="col-sm-12">
+                  <label>Nội dung phản hồi</label>
+                  <textarea style="border-radius: 0px;" class="form-control" id="message"  rows = "8"></textarea>
+                </div>
+              </div>
+              <input type="hidden" id="idContain">
+           </form>
+           <div class="row">
+            <div class="col-sm-10 col-md-offset-11">
+              <button class="btn btn-primary btn-md" id="btSendMessage" onclick="sendMessage();">
+                OK</button>
+            </div>
+          </div>
+         </div>
+       </div>
+     </div>
+ </div>
+</div>
+</div>
+
+
+<script type="text/javascript">
+$('.btComment').on('click', function(){
+  $('#myModalMessage').modal('show');
+  var id = this.value;
+  $('#idContain').val(id);
+  $('#maDXPL').text('DXPL_'+id);
+});
+
+// $('.btDetails').on('click', function(){
+//   $('#myModalTable').modal('show');
+//   // var id = this.value;
+//   // $('#idContain').val(id);
+//   // $('#maDXPL').text('DXPL_'+id);
+// });
+
+$(".confirm").on('change', function(){
     //alert('eedkd');
     var id = this.value;
     var bool = this.checked ? 1 : 0;
@@ -76,4 +139,26 @@
             }
     });
  });
+
+ $('#btSendMessage').on('click', function(){
+  var message = $('#message').val();
+  var id = $('#idContain').val();
+  $.ajax({
+      url: "/material_message",
+      type: "POST",
+      dataType: 'json',
+      //contentType: 'application/json; charset=utf-8',
+      data: 
+         {
+          'message': message,
+          'id' : id
+         }
+     }).done(function(data){
+      // hide model
+      $('#myModalMessage').modal('hide');
+      alert('Gửi phản hồi thành công!');
+  });
+});
+
+
 </script>

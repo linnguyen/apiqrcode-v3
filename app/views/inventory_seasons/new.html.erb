@@ -21,8 +21,39 @@
                                 <% end %>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
  </div>
+ <div id="page-wrapper">
+  <div class="container-fluid">
+    <div class="row" id="main" >
+     <div class="col-sm-12 col-md-12 well" id="content">
+      <div class="text-inline">
+      </div>
+      <div class="table-responsive">          
+        <table class="table table-bordered table-hover">
+          <thead id="table-header">
+            <tr>
+              <th>#</th>
+              <th>Tên</th>
+              <th>Hành động</th>
+            </tr>
+          </thead>
+          <tbody>
+          <% if @inventory_season.present ? %>
+          <tr>
+          <td width="10%"></td>
+          <td width="70%"></td>
+          <td width="20%" class="text-center"><%= button_to '', method: :delete, data: {confirm: "Bạn có chắc chắn xóa không?" }, disabled: false, style: "border: none; color: #428BCA;" do %>
+            <i class="fa fa-times" aria-hidden="true"></i>
+            <% end %></td>
+           </tr>
+          <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

@@ -64,7 +64,7 @@
     </div>
   </div>
 </div>
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+<div class="modal fade" id="myModalMaterial" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
 aria-hidden="true">
 <div class="modal-dialog modal-lg">
   <div class="modal-content">
@@ -130,16 +130,14 @@ aria-hidden="true">
 </div>
 </div>
 </div>
-<script type="text/javascript" src=""></script>
 <script type="text/javascript">
 
- $('#btnMaterialInput').on('click', function(){
-  $('#myModal').modal('show');
+$('#btnMaterialInput').on('click', function(){
+  $('#myModalMaterial').modal('show');
 });
 
- function updateForm(){
-
-  var rows = "";
+function updateForm(){
+    var rows = "";
       // var table = document.getElementById("table-result");
       var tenphoilieu = document.getElementById("tenphoilieu").value;
       var quicach = document.getElementById("quicach").value;
@@ -156,7 +154,7 @@ aria-hidden="true">
 
       $(rows).appendTo("#table-result tbody");
       // hide model
-      $('#myModal').modal('hide');
+      $('#myModalMaterial').modal('hide');
       // table.appendChild(rows);
     }
 
