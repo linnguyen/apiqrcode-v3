@@ -1,11 +1,11 @@
 <%= provide(:title, "Thống Kê") %>
+<%= provide(:page, "Thống Kê") %>
 <div id="page-wrapper">
         <div class="container-fluid">
             <div class="row" id="main" >
                 <div class="col-sm-12 col-md-12 well" id="content">
                     <div class="text-inline">
-                     <h3 class="text-center">Thống Kê</h3>
-                     <h4 class="text-right">Thời gian: <%= @month %> /<%= @year %></h4>
+                     <h4 class="text-right">Thời gian: <%= @year %></h4>
                     </div>
                     <div class="table-responsive">          
                         <table class="table table-bordered table-hover">
@@ -19,8 +19,9 @@
                                 <th rowspan="2" id="single-header">Số lượng thực tế</th>
                                 <th rowspan="2" id="single-header">Chênh lệch</th>
                                 <th rowspan="2" id="single-header">Nơi đặt để</th>
-                                <th rowspan="2" id="single-header">Thời Gian</th>
+                                <th rowspan="2" id="single-header">Thời gian</th>
                                 <th colspan="3" style="text-align: center; vertical-align: middle;">Tình trạng</th>
+                                <th rowspan="2" id="single-header">Ghi chú</th>
                               </tr>
                               <tr>
                                 <td>Bình thường</td>
@@ -62,8 +63,10 @@
                                <td><%= device.so_luong_thiet_bi_thanh_li %></td>
                                <% end %>
                            </tr>
-                           <% end %>
+                             <% end %>
                            <%= will_paginate @thiet_bi %>
+                           <% else %>
+                            <h4>Không tìm thấy dữ liệu</h4>
                            <% end %>
                           </tbody>
                        </table>
