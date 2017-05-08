@@ -5,6 +5,7 @@
             <div class="row" id="main" >
                 <div class="col-sm-12 col-md-12 well" id="content">
                     <div class="text-inline">
+                    <h4 class="text-right">Phòng: <%= @room %></h4>
                     </div>
                     <div class="table-responsive">          
                         <table class="table table-bordered table-hover">
@@ -35,11 +36,21 @@
                                <tr>
                                    <td><%= i+=1 %></td>
                                    <td><%= device.ma_thiet_bi %></td>
-                                   <td><%= device.ma_thiet_bi %></td>
+                                   <td><%= (get_device_by_id device.ma_thiet_bi).ten_thiet_bi %></td>
+                                   <td><%= (get_device_by_id device.ma_thiet_bi).don_vi_tinh %></td>
+                                   <td></td>
+                                   <% if device.so_luong_thuc_te == -1 %>
+                                   <td></td>
+                                   <% else %>
                                    <td><%= device.so_luong_thuc_te %></td>
+                                   <% end %>
+                                   <td></td>
+                                   <td><%= device.ma_pth %></td>
+                                   <td><%= device.thoi_gian.strftime("%d/%m/%Y") %></td>
+                                   <td><%= device.so_luong_thiet_bi_binh_thuong %></td>
+                                   <td><%= device.so_luong_thiet_bi_hong %></td>
+                                   <td><%= device.so_luong_thiet_bi_thanh_li %></td>
                                    <td><%= device.ghi_chu %></td>
-                                   <td></td>
-                                   <td></td>
                                </tr>
                                <% end %>
                            <% else %>

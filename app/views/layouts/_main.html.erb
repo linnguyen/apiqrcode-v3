@@ -82,7 +82,7 @@
                         <li data-toggle="collapse" data-target="#submenu1_3" aria-expanded="false"><a href="#"><i class="fa fa-angle-right"></i> Thông Kê Theo Đợt</a>
                             <ul class="nav collapse"  id="submenu1_3" role="menu" aria-labelledby="btn-1" >
                             <% get_list_iv_season.each do |s| %>
-                            <li><%= link_to s.ten, statistics_room_path(:season => s.id_dot)%></li>
+                            <li><%= link_to s.ten, statistics_season_path(:season => s.id_dot)%></li>
                             <% end %>
                            </ul>
                         </li>

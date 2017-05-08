@@ -21,6 +21,7 @@ Rails.application.routes.draw do
  resources :qrcodes , only: [:generate]
  get 'statistics/time/', to: 'statistics#show_by_time'
  get 'statistics/room/', to: 'statistics#show_by_room'
+ get 'statistics/season/', to: 'statistics#show_by_inventory_season'
  match 'search(/:search)', :to => 'inventories#search', :as => :search, via: [:get, :post]
  resources :materials
  post '/material_confirm', to: 'materials#confirm'
