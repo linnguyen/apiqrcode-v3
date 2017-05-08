@@ -1,11 +1,11 @@
 <%= provide(:title, "Thống Kê") %>
-<%= provide(:page, "Thống Kê") %>
+<%= provide(:page, "Thống Kê Theo Năm") %>
 <div id="page-wrapper">
         <div class="container-fluid">
             <div class="row" id="main" >
                 <div class="col-sm-12 col-md-12 well" id="content">
                     <div class="text-inline">
-                     <h4 class="text-right">Thời gian: <%= @year %></h4>
+                     <h4 class="text-right">Năm: <%= @year%></h4>
                     </div>
                     <div class="table-responsive">          
                         <table class="table table-bordered table-hover">
@@ -62,6 +62,7 @@
                                <% else %>
                                <td><%= device.so_luong_thiet_bi_thanh_li %></td>
                                <% end %>
+                               <td><%= device.ghi_chu %></td>
                            </tr>
                              <% end %>
                            <%= will_paginate @thiet_bi %>
