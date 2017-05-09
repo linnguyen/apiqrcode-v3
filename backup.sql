@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.7.17, for Linux (x86_64)
+-- MySQL dump 10.13  Distrib 5.7.18, for Linux (x86_64)
 --
 -- Host: localhost    Database: thietbi
 -- ------------------------------------------------------
--- Server version	5.7.17-0ubuntu0.16.04.1
+-- Server version	5.7.18-0ubuntu0.16.04.1
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -61,6 +61,38 @@ CREATE TABLE `schema_migrations` (
 LOCK TABLES `schema_migrations` WRITE;
 /*!40000 ALTER TABLE `schema_migrations` DISABLE KEYS */;
 /*!40000 ALTER TABLE `schema_migrations` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tb_chi_tiet_de_xuat_phoi_lieu`
+--
+
+DROP TABLE IF EXISTS `tb_chi_tiet_de_xuat_phoi_lieu`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tb_chi_tiet_de_xuat_phoi_lieu` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `ten_vat_tu_phoi_lieu` varchar(45) DEFAULT NULL,
+  `qui_cach` varchar(45) DEFAULT NULL,
+  `chung_loai` varchar(45) DEFAULT NULL,
+  `xuat_xu` varchar(45) DEFAULT NULL,
+  `don_vi_tinh` varchar(45) DEFAULT NULL,
+  `tong_so` int(11) DEFAULT NULL,
+  `da_co` int(11) DEFAULT NULL,
+  `mua_moi` varchar(45) DEFAULT NULL,
+  `ma_dxpl` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=156 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tb_chi_tiet_de_xuat_phoi_lieu`
+--
+
+LOCK TABLES `tb_chi_tiet_de_xuat_phoi_lieu` WRITE;
+/*!40000 ALTER TABLE `tb_chi_tiet_de_xuat_phoi_lieu` DISABLE KEYS */;
+INSERT INTO `tb_chi_tiet_de_xuat_phoi_lieu` VALUES (130,'Sắt hiện đại','chuẩn','','Trung Quốc','kg',10,2,'8 kg',48),(131,'Đông thau','chuẩn','','Việt Nam - Đài Loan','kg',10,2,'8 kg',48),(132,'Thủy tinh','chuẩn','','Singapore','tấm',3,0,'3 tấm',48),(140,'Máy tính','chuẩn','','China','chiếc',3,0,'3',52),(141,'Máy tính','chuẩn','','China','chiếc',3,0,'3',52),(142,'Máy tính','chuẩn','','China','chiếc',3,0,'3',52),(143,'Máy tính','chuẩn','','China','chiếc',3,0,'3',52),(144,'Máy tính','chuẩn','','China','chiếc',3,0,'3',52),(145,'Máy tính','chuẩn','','China','chiếc',3,0,'3',52),(147,'Vải','chuẩn','','China','Mét',3,0,'3 m',63),(148,'Vải','chuẩn','','China','Mét',3,0,'3 m',63),(149,'Vải','chuẩn','Nội nhập','Hà Nội','Mét',10,2,'8 m',64),(150,'Thước đo','chuẩn','Nội nhập','Việt Nam','cây',10,0,'10 cây',64),(151,'Chỉ','chuẩn','Nội nhập','Việt Nam','cuộn',3,0,'3 cuộn',64),(152,'Màu ','chuẩn','Nội nhập','Việt Nam','cuộn',3,0,'3 cuộn',64),(153,'Màu ','chuẩn','Nội nhập','Việt Nam','cuộn',3,0,'3 cuộn',64),(154,'Màu ','chuẩn','Nội nhập','Việt Nam','cuộn',3,0,'3 cuộn',64),(155,'Màu ','chuẩn','Nội nhập','Việt Nam','cuộn',3,0,'3 cuộn',64);
+/*!40000 ALTER TABLE `tb_chi_tiet_de_xuat_phoi_lieu` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -194,6 +226,38 @@ INSERT INTO `tb_danh_muc_thiet_bi` VALUES ('TB00001','Bộ máy tính để bàn
 UNLOCK TABLES;
 
 --
+-- Table structure for table `tb_de_xuat_phoi_lieu`
+--
+
+DROP TABLE IF EXISTS `tb_de_xuat_phoi_lieu`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tb_de_xuat_phoi_lieu` (
+  `ma_dxpl` int(11) NOT NULL AUTO_INCREMENT,
+  `thoi_gian` datetime DEFAULT NULL,
+  `so_phieu` varchar(45) DEFAULT NULL,
+  `xac_nhan` int(11) DEFAULT NULL,
+  `mon` varchar(45) DEFAULT NULL,
+  `tong_so_hoc_sinh` int(11) DEFAULT NULL,
+  `truong_phan_hoi` varchar(100) DEFAULT NULL,
+  `li_do` varchar(100) DEFAULT NULL,
+  `ma_nql` int(11) DEFAULT NULL,
+  `trang_thai` int(11) DEFAULT NULL,
+  PRIMARY KEY (`ma_dxpl`)
+) ENGINE=InnoDB AUTO_INCREMENT=65 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tb_de_xuat_phoi_lieu`
+--
+
+LOCK TABLES `tb_de_xuat_phoi_lieu` WRITE;
+/*!40000 ALTER TABLE `tb_de_xuat_phoi_lieu` DISABLE KEYS */;
+INSERT INTO `tb_de_xuat_phoi_lieu` VALUES (48,'2017-05-03 09:15:05',NULL,1,'Hóa công nghiệp',NULL,'Lần sau phải ghi chi tiết hơn nhé!','Thực hành cuối khóa',5,1),(52,'2017-05-04 02:49:32',NULL,0,'Toán Rời rạc',19,'','Thực hành môn học',5,1),(63,'2017-05-05 04:31:01',NULL,0,'Công nghệ chế tạo dệt',10,'','Học sinh muốn tăng cường thực hành',5,1),(64,'2017-05-05 07:18:40',NULL,0,'Dệt may công cộng',12,NULL,'Thực hiện may cho tiết học phần thực hành',3,NULL);
+/*!40000 ALTER TABLE `tb_de_xuat_phoi_lieu` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `tb_don_vi`
 --
 
@@ -229,7 +293,7 @@ CREATE TABLE `tb_dot_kiem_ke` (
   `id_dot` int(11) NOT NULL AUTO_INCREMENT,
   `ten` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id_dot`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -238,7 +302,7 @@ CREATE TABLE `tb_dot_kiem_ke` (
 
 LOCK TABLES `tb_dot_kiem_ke` WRITE;
 /*!40000 ALTER TABLE `tb_dot_kiem_ke` DISABLE KEYS */;
-INSERT INTO `tb_dot_kiem_ke` VALUES (1,'Cuối năm'),(2,'Đột xuất'),(3,'Thường xuyên'),(5,'Giờ vàng'),(6,'Giờ chốt'),(7,'Giờ bất thình lình');
+INSERT INTO `tb_dot_kiem_ke` VALUES (1,'cuối năm'),(2,'đột xuất'),(3,'thường xuyên');
 /*!40000 ALTER TABLE `tb_dot_kiem_ke` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -288,7 +352,7 @@ CREATE TABLE `tb_kiem_ke` (
   `thoi_gian` date DEFAULT NULL,
   `id_dot` int(11) DEFAULT NULL,
   PRIMARY KEY (`ma_kiem_ke`)
-) ENGINE=InnoDB AUTO_INCREMENT=136 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=149 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -297,7 +361,7 @@ CREATE TABLE `tb_kiem_ke` (
 
 LOCK TABLES `tb_kiem_ke` WRITE;
 /*!40000 ALTER TABLE `tb_kiem_ke` DISABLE KEYS */;
-INSERT INTO `tb_kiem_ke` VALUES (125,'TB00001',90,20,70,0,'can xem lai cac cach dung de han che hu hong','D110','2017-04-25',NULL),(126,'TB00004',30,28,2,0,'','D110','2017-04-25',NULL),(127,'TB00001',2,2,1,-1,'','D110','2017-04-25',NULL),(128,'TB00004',1,-1,-1,-1,'','D110','2017-04-25',NULL),(129,'TB00001',12,-1,-1,-1,'','D110','2017-04-27',2),(130,'TB00001',14,5,3,1,'can gi do de lam cho xong cho roi','D110','2017-04-27',2),(131,'TB00001',13,-1,-1,-1,'chua biet duong','D110','2017-04-27',2),(132,'TB00004',15,12,0,-1,'sdfsf','D110','2017-04-27',2),(133,'TB00001',3,1,1,2,'sq','D110','2017-04-29',3),(134,'TB00001',12,4,6,1,'dwsfwf','D110','2017-04-29',3),(135,'TB00004',32,-1,-1,-1,'fsfsf','D110','2017-04-29',3);
+INSERT INTO `tb_kiem_ke` VALUES (125,'TB00001',90,20,70,0,'can xem lai cac cach dung de han che hu hong','D110','2017-04-25',NULL),(126,'TB00004',30,28,2,0,'','D110','2017-04-25',NULL),(127,'TB00001',2,2,1,-1,'','D110','2017-04-25',NULL),(128,'TB00004',1,-1,-1,-1,'','D110','2017-04-25',NULL),(129,'TB00001',12,-1,-1,-1,'','D110','2017-04-27',2),(130,'TB00001',14,5,3,1,'can gi do de lam cho xong cho roi','D110','2017-04-27',2),(131,'TB00001',13,-1,-1,-1,'chua biet duong','D110','2017-04-27',2),(132,'TB00004',15,12,0,-1,'sdfsf','D110','2017-04-27',2),(133,'TB00001',3,1,1,2,'sq','D110','2017-04-29',3),(134,'TB00001',12,4,6,1,'dwsfwf','D110','2017-04-29',3),(135,'TB00004',32,-1,-1,-1,'fsfsf','D110','2017-04-29',3),(136,'TB00001',12,2,2,1,'1wqwww1','D110','2017-04-29',2),(137,'TB00001',12,2,2,1,'1wqwww1','D110','2017-04-29',2),(138,'TB00001',12,2,2,1,'1wqwww1','D110','2017-04-29',2),(139,'TB00001',4,2,3,1,'qeqeq','D110','2017-05-02',1),(140,'TB00001',12,3,-1,1,'sasasqs','D110','2017-05-02',2),(141,'TB00001',13,23,1,12,'sqsqsqs','D110','2017-05-02',2),(142,'TB00004',-1,-1,12,-1,'swdwd','D110','2016-05-02',2),(143,'TB00001',4,2,1,0,'can lam mot chut suy nghi','D110','2017-05-02',2),(144,'TB00001',4,2,1,0,'can lam mot chut suy nghi','D110','2017-05-02',2),(145,'TB00001',4,2,1,0,'can lam mot chut suy nghi','D110','2017-05-02',2),(146,'TB00001',38,-1,23,-1,'can gf do ko biet','D110','2017-05-02',1),(147,'TB00001',7,2,4,1,'can su dung thiet bi ok hon','D110','2017-05-03',1),(148,'TB00001',3,2,1,2,'can su','D110','2017-05-03',1);
 /*!40000 ALTER TABLE `tb_kiem_ke` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -541,4 +605,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-04-29 14:02:13
+-- Dump completed on 2017-05-09  9:26:01
