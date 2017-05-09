@@ -64,6 +64,7 @@ class Api::InventoriesController < ApplicationController
 
         end
     end
+    
     def check_latest_inventory_per_room 
 		ma_pth = params[:ma_pth]
 		latest_inventory = KiemKe.where("ma_pth = ? AND thoi_gian = ?", ma_pth,(get_list_day_by_room ma_pth).first)      
@@ -74,9 +75,15 @@ class Api::InventoriesController < ApplicationController
                            :info => "",
                            :data => "" }
         else
+        	days = Time.now.to_date - latest_inventory.first.thoi_gian.to_date).to_i
+            if days = 0
+            message = "Phòng này có "+latest_inventory.count.to_s+" thiết bị đã được thực hiện kiểm kê hôm nay. Bạn có muốn tiếp tục thực hiện kiểm kê không?"
+            else
+            message = "Phòng này có "+latest_inventory.count.to_s+" thiết bị đã được thực hiện kiểm kê cách đây "+days.to_s+" ngày. Bạn có muốn tiếp tục thực hiện kiểm kê không?"
+        	end
         	render :status => 200,
                 :json => { :success => true,
-                           :info => "Phòng này có "+latest_inventory.count.to_s+" thiết bị đã được thực hiện kiểm kê cách đây "+(Time.now.to_date - latest_inventory.first.thoi_gian.to_date).to_i.to_s+" ngày. Bạn có muốn tiếp tục thực hiện kiểm kê không?",
+                           :info => "",
                            :data => "" }
 
         end
