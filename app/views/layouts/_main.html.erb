@@ -66,8 +66,8 @@
                     <a href="#" data-toggle="collapse" data-target="#submenu1" aria-expanded="false"><i class="fa fa-fw fa-star"></i> THỐNG KÊ <i class="fa fa-fw fa-angle-down pull-right"></i></a>
                     <ul class="nav collapse" id="submenu1" role="menu" aria-labelledby="btn-1" >
                         <li data-toggle="collapse" data-target="#submenu1_1" aria-expanded="false"><a href="#"><i class="fa fa-angle-right"></i> Theo Năm</a>
-                           <ul class="nav collapse"  id="submenu1_1" role="menu" aria-labelledby="btn-1" >
                            <% if !get_list_day.nil? %>
+                           <ul class="nav collapse"  id="submenu1_1" role="menu" aria-labelledby="btn-1" >
                            <% get_list_day.each do |d| %>
                             <li><%= link_to d, statistics_time_path(:time => d) %></li>
                             <% end %>
