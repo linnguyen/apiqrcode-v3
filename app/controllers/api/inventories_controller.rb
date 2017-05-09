@@ -57,9 +57,15 @@ class Api::InventoriesController < ApplicationController
                            :info => "",
                            :data => "" }
         else
+        	days = (Time.now.to_date - latest_inventory.thoi_gian.to_date).to_i
+        	if days == 0
+        		message = "Thiết bị này đã được thực hiện kiểm kê hôm nay. Bạn có muốn tiếp tục thực hiện kiểm kê không?"
+        	else
+        		message = "Thiết bị này đã được thực hiện kiểm kê cách đây "+days.to_s+ " ngày trong đợt "+(get_iv_season_by_id latest_inventory.id_dot.to_s).ten.to_s+". Bạn có muốn tiếp tục thực hiện kiểm kê không?"
+            end
         	render :status => 200,
                 :json => { :success => true,
-                           :info => "Thiết bị này đã được thực hiện kiểm kê cách đây "+(Time.now.to_date - latest_inventory.thoi_gian.to_date).to_i.to_s+ " ngày trong đợt "+(get_iv_season_by_id latest_inventory.id_dot.to_s).ten.to_s+". Bạn có muốn tiếp tục thực hiện kiểm kê không?",
+                           :info => "",
                            :data => "" }
 
         end
