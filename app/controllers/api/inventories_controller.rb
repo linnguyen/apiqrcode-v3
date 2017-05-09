@@ -50,7 +50,7 @@ class Api::InventoriesController < ApplicationController
 	def check_latest_inventory_per_device 
 		ma_thiet_bi = params[:ma_thiet_bi]
 		latest_inventory = KiemKe.where("ma_thiet_bi= ? AND YEAR(thoi_gian) = ?", ma_thiet_bi, Time.now.year).order("thoi_gian desc").first        
-        byebug
+        # byebug
         if latest_inventory.nil?
         	render :status => 200,
                 :json => { :success => true,
@@ -67,7 +67,7 @@ class Api::InventoriesController < ApplicationController
     def check_latest_inventory_per_room 
 		ma_thiet_bi = params[:ma_pth]
 		latest_inventory = KiemKe.where("ma_thiet_bi= ? AND thoi_gian = ?", ma_pth,(get_list_day_by_room ma_pth).first)      
-        byebug
+        # byebug
         if latest_inventory.nil?
         	render :status => 200,
                 :json => { :success => true,
