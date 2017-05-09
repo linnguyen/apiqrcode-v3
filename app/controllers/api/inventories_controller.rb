@@ -76,7 +76,7 @@ class Api::InventoriesController < ApplicationController
                            :data => "" }
         else
         	days = Time.now.to_date - latest_inventory.first.thoi_gian.to_date).to_i
-            if days = 0
+            if days == 0
             message = "Phòng này có "+latest_inventory.count.to_s+" thiết bị đã được thực hiện kiểm kê hôm nay. Bạn có muốn tiếp tục thực hiện kiểm kê không?"
             else
             message = "Phòng này có "+latest_inventory.count.to_s+" thiết bị đã được thực hiện kiểm kê cách đây "+days.to_s+" ngày. Bạn có muốn tiếp tục thực hiện kiểm kê không?"
