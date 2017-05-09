@@ -75,7 +75,7 @@ class Api::InventoriesController < ApplicationController
                            :info => "",
                            :data => "" }
         else
-        	days = Time.now.to_date - latest_inventory.first.thoi_gian.to_date).to_i
+        	days = (Time.now.to_date - latest_inventory.first.thoi_gian.to_date).to_i
             if days == 0
             message = "Phòng này có "+latest_inventory.count.to_s+" thiết bị đã được thực hiện kiểm kê hôm nay. Bạn có muốn tiếp tục thực hiện kiểm kê không?"
             else
@@ -83,7 +83,7 @@ class Api::InventoriesController < ApplicationController
         	end
         	render :status => 200,
                 :json => { :success => true,
-                           :info => "",
+                           :info => message,
                            :data => "" }
 
         end
