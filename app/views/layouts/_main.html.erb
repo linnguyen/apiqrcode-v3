@@ -67,10 +67,12 @@
                     <ul class="nav collapse" id="submenu1" role="menu" aria-labelledby="btn-1" >
                         <li data-toggle="collapse" data-target="#submenu1_1" aria-expanded="false"><a href="#"><i class="fa fa-angle-right"></i> Theo Năm</a>
                            <ul class="nav collapse"  id="submenu1_1" role="menu" aria-labelledby="btn-1" >
+                           <% if !get_list_day.nil? %>
                            <% get_list_day.each do |d| %>
                             <li><%= link_to d, statistics_time_path(:time => d) %></li>
                             <% end %>
                            </ul>
+                           <% end %>
                         </li>
                         <li data-toggle="collapse" data-target="#submenu1_2" aria-expanded="false"><a href="#"><i class="fa fa-angle-right"></i> Thống Kê Theo Phòng</a>
                             <ul class="nav collapse"  id="submenu1_2" role="menu" aria-labelledby="btn-1" >
