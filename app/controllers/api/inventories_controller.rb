@@ -65,7 +65,7 @@ class Api::InventoriesController < ApplicationController
             end
         	render :status => 200,
                 :json => { :success => true,
-                           :info => "",
+                           :info => message,
                            :data => "" }
 
         end
