@@ -10,12 +10,9 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="http://cijulenlinea.ucr.ac.cr/dev-users/"> 
-                
-                <span id="logo" >DANAVTC</span>
-                 
-            </a>
-        </div>
+            <%= link_to "DANAVTC", root_path, id: "logo", class: "navbar-brand" %>
+             
+         </div>
         <!-- Top Menu Items -->
         <ul class="nav navbar-right top-nav">
             <li><a href="#" data-placement="bottom" data-toggle="tooltip" href="#" data-original-title="Stats"><i class="fa fa-bar-chart-o"></i>
@@ -54,8 +51,8 @@
              <ul class="nav navbar-nav side-nav">
                 <% if is_admin? %>
                 <li>
-                    <%= link_to new_inventory_season_path do %>
-                    <i class="fa fa-fw fa-user-plus"></i>  TẠO ĐỢT KIỂM KÊ
+                    <%= link_to seasons_path do %>
+                    <i class="fa fa-wrench" aria-hidden="true"></i>  TẠO ĐỢT KIỂM KÊ
                     <% end %>
                 </li>
                 <li>
@@ -94,12 +91,12 @@
                 </li>
                 <li>
                     <%= link_to qrcodes_path do %>
-                    <i class="fa fa-fw fa-user-plus"></i>  TẠO MÃ QR
+                    <i class="fa fa fa-qrcode" aria-hidden="true"></i>  TẠO MÃ QR
                     <% end %>
                 </li>
                 <li>
                     <%= link_to admin_materials_path do %>
-                    <i class="fa fa-fw fa-user-plus"></i>  QUẢN LÍ PHÔI LIỆU
+                    <i class="fa fa-desktop" aria-hidden="true"></i>  QUẢN LÍ PHÔI LIỆU
                     <% end %>
                 </li>
                 <% else %>

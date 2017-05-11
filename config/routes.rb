@@ -29,5 +29,6 @@ Rails.application.routes.draw do
  get 'user/materials', to: 'materials#index_user'
  get 'admin/materials', to: 'materials#index_admin'
  get 'material_details', to: 'materials#material_details'
- resources :inventory_seasons
+ resources :inventory_seasons, only: [:destroy]
+ match 'seasons', :to => 'inventory_seasons#season', via: [:get, :post]
 end

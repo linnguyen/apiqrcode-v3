@@ -1,3 +1,5 @@
+<%= provide(:title, "Đợt Kiểm Kê") %>
+<%= provide(:page, "Đợt Kiểm Kê") %>
 <div id="page-wrapper">
         <div class="container-fluid">
             <div class="row" id="main" >
@@ -5,8 +7,7 @@
 
                     <div class="col-sm-10">
                         <div class="form-area">  
-                                 <h3 style="margin-bottom: 25px; text-align: center;">Form thêm đợt kiểm kê</h3>
-                                 <%= form_for @inventory_season, url:inventory_seasons_path ,html: {class: "form-horizontal",multipart: true} do |f| %>
+                                 <%= form_for @inventory_season, url:seasons_path ,html: {class: "form-horizontal",multipart: true} do |f| %>
                                   <div class="form-group">
                                       <div class="col-sm-12">
                                          <label>Tên đợt kiểm kê</label>
@@ -35,20 +36,20 @@
         <table class="table table-bordered table-hover">
           <thead id="table-header">
             <tr>
-              <th>#</th>
-              <th>Tên</th>
-              <th>Hành động</th>
+              <th class="text-center">#</th>
+              <th class="text-center">Tên</th>
+              <th class="text-center">Hành động</th>
             </tr>
           </thead>
           <tbody>
-          <% if @inventory_season.present ? %>
+          <% if @inventory_season1.present? %>
+          <% @inventory_season1.each do |iv| %>
           <tr>
-          <td width="10%"></td>
-          <td width="70%"></td>
-          <td width="20%" class="text-center"><%= button_to '', method: :delete, data: {confirm: "Bạn có chắc chắn xóa không?" }, disabled: false, style: "border: none; color: #428BCA;" do %>
-            <i class="fa fa-times" aria-hidden="true"></i>
-            <% end %></td>
-           </tr>
+          <td width="10%" class="text-center"><%= iv.id_dot %></td>
+          <td width="70%" class="text-center"><%= iv.ten %></td>
+          <td width="20%" class="text-center"><%= button_to "delete",  inventory_season_path(:id => iv.id), :method => :delete %></td>
+          </tr>
+          <% end %>
           <% end %>
           </tbody>
         </table>
