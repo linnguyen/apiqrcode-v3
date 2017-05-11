@@ -70,7 +70,7 @@
                            <% if !get_list_day.nil? %>
                            <ul class="nav collapse"  id="submenu1_1" role="menu" aria-labelledby="btn-1" >
                            <% get_list_day.each do |d| %>
-                            <li><%= link_to d, statistics_time_path(:time => d) %></li>
+                            <li><%= link_to d, statistics_time_path(:time => d), id:"st" %></li>
                             <% end %>
                            </ul>
                            <% end %>
@@ -78,14 +78,14 @@
                         <li data-toggle="collapse" data-target="#submenu1_2" aria-expanded="false"><a href="#"><i class="fa fa-angle-right"></i> Thống Kê Theo Phòng</a>
                             <ul class="nav collapse"  id="submenu1_2" role="menu" aria-labelledby="btn-1" >
                             <% get_list_room.each do |r| %>
-                            <li><%= link_to r.phong_thuc_hanh, statistics_room_path(:room => r.ma_pth)%></li>
+                            <li id="tt"><%= link_to r.phong_thuc_hanh, statistics_room_path(:room => r.ma_pth),id:"st" %></li>
                             <% end %>
                            </ul>
                         </li>
                         <li data-toggle="collapse" data-target="#submenu1_3" aria-expanded="false"><a href="#"><i class="fa fa-angle-right"></i> Thông Kê Theo Đợt</a>
                             <ul class="nav collapse"  id="submenu1_3" role="menu" aria-labelledby="btn-1" >
                             <% get_list_iv_season.each do |s| %>
-                            <li><%= link_to s.ten, statistics_season_path(:season => s.id_dot)%></li>
+                            <li><%= link_to s.ten, statistics_season_path(:season => s.id_dot), id:"st"%></li>
                             <% end %>
                            </ul>
                         </li>
