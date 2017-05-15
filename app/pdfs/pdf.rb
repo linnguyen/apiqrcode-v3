@@ -3,20 +3,17 @@ class Pdf < Prawn::Document
 		super(top_margin: 70)
 		@thietbi = thietbi
 		# @view = view
-		order_number
+		# order_number
+		text "con ga"
 		line_items
 		# total_price
 		# text "Order \##{@order.order_number}"
 		# text 'Order goes here'
 	end
-
-	def order_number
-		text "Order", size: 30, style: :bold
-	end
     
     def line_items
     	# move_down 20
-    	table line_item_rows do 
+    	table line_item_rows do
             # row(0).font_style = :bold
             column(1..3).align = :right
             # self.row_colors = ['DDDDDD', 'FFFFFF']
