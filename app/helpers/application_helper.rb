@@ -45,6 +45,14 @@ module ApplicationHelper
     
     def get_amount_of_output_device_by_room ma_pth,ma_thiet_bi
         # tu phong -> nhanvien -> phieuxuat -> tim theo ma_tb
+       # stock_issue = []
+       # room = PhongThucHanh.find_by(ma_pth: ma_pth)
+       # staff = room.nhan_vien
+       # staff.each do |px|
+       # stock_issue << px
+       # end
+       # stock_issue.each do |
+       # phieuxuat.chi_tiet_nhap_xuat.where()
     end
 
 	def get_number_of_device_left ma_thiet_bi
@@ -60,4 +68,5 @@ module ApplicationHelper
     def get_staff_by_id ma_nql
     	staff = NhanVien.find_by(ma_nql: ma_nql)
     end
+
 end

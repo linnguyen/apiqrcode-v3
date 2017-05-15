@@ -5,6 +5,8 @@
             <div class="row" id="main" >
                 <div class="col-sm-12 col-md-12 well" id="content">
                     <div class="text-inline">
+                     <h4 class="text-left"><%= link_to "Export(PDF)", download_path(
+                     @thiet_bi,format: 'pdf') %></h4>
                      <h4 class="text-right">Năm: <%= @year%></h4>
                     </div>
                     <div class="table-responsive">          

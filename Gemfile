@@ -5,7 +5,6 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.2'
 # Use mysql as the database for Active Record
@@ -44,6 +43,10 @@ gem 'bootstrap-sass', '3.3.6'
 gem 'will_paginate',  '3.1.0'
 # Qr code gem
 gem 'rqrcode-with-patches', '~> 0.5.4'
+# Gem for convert html to word
+gem 'prawn'
+gem 'responders'
+gem 'prawn-table'
 # ***********************************************
 
 group :development, :test do

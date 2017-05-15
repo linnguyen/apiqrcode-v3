@@ -31,4 +31,5 @@ Rails.application.routes.draw do
  get 'material_details', to: 'materials#material_details'
  resources :inventory_seasons, only: [:destroy]
  match 'seasons', :to => 'inventory_seasons#season', via: [:get, :post]
+ get 'download', to: 'statistics#download'
 end
