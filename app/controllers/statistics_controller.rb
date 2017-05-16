@@ -18,19 +18,14 @@ class StatisticsController < ApplicationController
 
   def download
       @thiet_bi = KiemKe.all
-    	# respond_to do |format|
-    	# 	format.docx do
-    	# 		render docx: 'download', filename: 'members.docx'
-    	# 	end
-    	# end
-        respond_to do |format|
+      respond_to do |format|
             format.html
             format.pdf do
               pdf = Pdf.new(@thiet_bi)
               send_data pdf.render,
-              filename: "thongke",
-              type: 'application/pdf',
-              disposition: 'inline'        
+                      filename: "thongke",
+                      type: 'application/pdf',
+                      disposition: 'inline'        
             end
         end
     end
