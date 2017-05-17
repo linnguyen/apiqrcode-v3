@@ -5,7 +5,11 @@
             <div class="row" id="main" >
                 <div class="col-sm-12 col-md-12 well" id="content">
                     <div class="text-inline">
-                     <h4 class="text-left"><%= link_to "Export(PDF)", download_path(year: @year, format: 'pdf') %></h4>
+                     <h4 class="text-left">
+                     <%= link_to download_path(year: @year, format: 'pdf'), style: "border: none; size: 50dp;" do %>
+                       <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
+                     <% end %>
+                     </h4>
                      <h4 class="text-right">Năm: <%= @year%></h4>
                     </div>
                     <div class="table-responsive">          
