@@ -3,6 +3,7 @@ class StatisticsController < ApplicationController
 	def show_by_time
       @year = params[:time]
       @thiet_bi = KiemKe.where("YEAR(thoi_gian) = ?", @year).paginate(page: params[:page], :per_page => 8)
+      @nawm = (get_device_by_id "TB00001").ten_thiet_bi
   end
 
 	def show_by_room
@@ -18,12 +19,13 @@ class StatisticsController < ApplicationController
 
   def download
       @thiet_bi = KiemKe.all
+      
       respond_to do |format|
             format.html
             format.pdf do
               pdf = Pdf.new(@thiet_bi)
               send_data pdf.render,
-                      filename: "thongke",
+                      filename:"thongke",
                       type: 'application/pdf',
                       disposition: 'inline'        
             end
