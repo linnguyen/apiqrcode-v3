@@ -18,12 +18,12 @@ class StatisticsController < ApplicationController
 	end
 
   def download
-      @thiet_bi = KiemKe.all
-      
+      year = params[:year]
+      @thiet_bi = KiemKe.where("YEAR(thoi_gian) = ?",year)
       respond_to do |format|
             format.html
             format.pdf do
-              pdf = Pdf.new(@thiet_bi)
+              pdf = Pdf.new(@thiet_bi, year)
               send_data pdf.render,
                       filename:"thongke",
                       type: 'application/pdf',

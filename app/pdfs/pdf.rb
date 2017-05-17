@@ -1,9 +1,10 @@
 require "prawn"
 class Pdf < Prawn::Document
-	def initialize(thietbi)
+	def initialize(thietbi, year)
 		# encoding: utf-8
 		super(top_margin: 70)
 		@thietbi = thietbi
+		@year = year
 		set_font_ttf
 		move_down 30
         # text "Phòng Quản trị thiết bị",:size => 10,:style => :bold
@@ -13,8 +14,8 @@ class Pdf < Prawn::Document
         draw_text "Mẫu số: C32-H",:at => [450,720], :size => 10, :style => :bold
         draw_text "(Ban hành kèm theo QĐ số 999 - TC/QĐ/CĐKT", :at => [320,705], :size => 10
         draw_text "Ngày 02/11/1996 của Bộ Tài Chính)",:at => [320,690], :size => 10
-        draw_text "BIÊN BẢN KIỂM KÊ TÀI SẢN CỐ ĐỊNH NĂM", :at => [90, 660], :size => 16, :style => :bold
-        # draw_text("hehe",:at => [150,680],:size => 10,:styles => [:bold,:italic])
+        draw_text "BIÊN BẢN KIỂM KÊ TSCĐ NĂM "+ @year, :at => [100, 650], :size => 16,:style => :bold
+        draw_text "Đến 0 giờ, ngày...tháng...năm "+@year,:at => [140,635], :size => 10
         table_inventory
     end
    
@@ -28,7 +29,7 @@ class Pdf < Prawn::Document
                 font "timesnewroman"
     end
 
-     def table_inventory
+    def table_inventory
      	i = 0
 
      	move_down 40
