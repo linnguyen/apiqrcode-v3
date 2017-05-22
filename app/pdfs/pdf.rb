@@ -45,16 +45,6 @@ class Pdf < Prawn::Document
          table table_content, :cell_style => {:size => 10}
      end
 
-    # def line_items
-    #     move_down 20
-    #     table line_item_rows do
-    #         # row(0).font_style = :bold
-    #         # column(1..3).align = :right
-    #         # self.row_colors = ['DDDDDD', 'FFFFFF']
-    #         # self.header = true
-    # 	end
-    # end
-
  end
 
     

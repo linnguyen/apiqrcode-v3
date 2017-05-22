@@ -49,14 +49,15 @@
                 <th rowspan="2" id="single-header">Hành động</th>
               </tr>
               <tr>
-                <td>Tổng Số</td>
-                <td>Đã Có</td>
-                <td>Mua Mới</td>
+                <th>Tổng Số</th>
+                <th>Đã Có</th>
+                <th>Mua Mới</th>
               </tr>
             </thead>
             <tbody>
             </tbody>
           </table>
+          <h4 id="nodata">Không có dữ liệu</h4>
         </div>
         <%= button_tag "Gửi Đề Xuất", class: "btn btn-primary btn-lg pull-right", id: "btSM", onclick:"submitData();" %>
       </div>
@@ -67,62 +68,66 @@
 aria-hidden="true">
 <div class="modal-dialog modal-lg">
   <div class="modal-content">
-    <div class="modal-header">
-      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-        ×</button>
-        <h4 class="modal-title" id="myModalLabel">Thêm Phôi Liệu</h4>
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+          ×</button>
+          <h4 class="modal-title" id="myModalLabel">Thêm Phôi Liệu</h4>
       </div>
       <div class="modal-body">
         <div class="row">
          <div class="col-md-12">
           <form role="form" class="form-horizontal">
-            <div class="form-group">
-              <div class="col-sm-10">
-                <label> Tên Vật Tư, Phôi Liệu</label>
-                <input style="border-radius: 0px;" class="form-control" id="tenphoilieu" placeholder="Tên Vật Tư, Phôi Liệu" />
+              <div class="form-group">
+                <div class="col-sm-10">
+                  <label> Tên Vật Tư, Phôi Liệu</label>
+                  <input style="border-radius: 0px;" class="form-control" id="tenphoilieu" placeholder="Tên Vật Tư, Phôi Liệu" required="true" />
+                  <div id="errorMaterial" class="pull-left"></div>
+                </div>
               </div>
-            </div>
-            <div class="form-group">
-              <div class="col-sm-6">
-                <label>Qui Cách</label>
-                <input style="border-radius: 0px;" class="form-control" id="quicach" placeholder="Qui cách" />
-              </div>
-              <div class="col-sm-6">
-               <label>Chủng Loại</label>
-               <input style="border-radius: 0px;" type="text" class="form-control" id="chungloai" name="name" placeholder="Chủng loại" >
+              <div class="form-group">
+                <div class="col-sm-6">
+                  <label>Qui Cách</label>
+                  <input style="border-radius: 0px;" class="form-control" id="quicach" placeholder="Qui cách" />
+                </div>
+                <div class="col-sm-6">
+                 <label>Chủng Loại</label>
+                 <input style="border-radius: 0px;" type="text" class="form-control" id="chungloai" name="name" placeholder="Chủng loại" >
+               </div>
              </div>
-           </div>
-           <div class="form-group">
-            <div class="col-sm-6">
-              <label>Xuất Xứ</label>
-              <input style="border-radius: 0px;" class="form-control" id="xuatxu" placeholder="Xuất xứ" />
+            <div class="form-group">
+                <div class="col-sm-6">
+                  <label>Xuất Xứ</label>
+                  <input style="border-radius: 0px;" class="form-control" id="xuatxu" placeholder="Xuất xứ" />
+                </div>
+                 <div class="col-sm-6">
+                   <label>Đơn Vị Tính</label>
+                   <input style="border-radius: 0px;" type="text" class="form-control" id="donvitinh" name="name" placeholder="Đơn vị tính" >
+                </div>
             </div>
-            <div class="col-sm-6">
-             <label>Đơn Vị Tính</label>
-             <input style="border-radius: 0px;" type="text" class="form-control" id="donvitinh" name="name" placeholder="Đơn vị tính" >
-           </div>
-         </div>
-         <div class="form-group">
-          <div class="col-sm-2">
-            <label>Tổng Số</label>
-            <input style="border-radius: 0px;" class="form-control" id="tongso" placeholder="Tổng số" />
+             <div class="form-group">
+              <div class="col-sm-2">
+                <label>Tổng Số</label>
+                <input style="border-radius: 0px;" class="form-control" id="tongso" placeholder="Tổng số" />
+                <div  id ="errorTotal" class="pull-left"></div>
+              </div>
+              <div class="col-sm-2">
+               <label>Đã Có</label>
+               <input style="border-radius: 0px;" type="text" class="form-control" id="daco" name="name" placeholder="Đã có" >
+               <div  id = "errorOld" class="pull-left"></div>
+             </div>
+             <div class="col-sm-2">
+               <label>Mua Mới</label>
+               <input style="border-radius: 0px;" type="text" class="form-control" id="muamoi" name="name" placeholder="Mua mới" >
+               <div id="errorNew" class="pull-left"></div>
+             </div>
+             </div>
+         </form>
+          <div class="row">
+                  <div class="col-sm-10 col-md-offset-11">
+                     <button class="btn btn-primary btn-md" onclick="updateForm();">
+                      OK</button>
+                  </div>
           </div>
-          <div class="col-sm-2">
-           <label>Đã Có</label>
-           <input style="border-radius: 0px;" type="text" class="form-control" id="daco" name="name" placeholder="Đã có" >
-         </div>
-         <div class="col-sm-2">
-           <label>Mua Mới</label>
-           <input style="border-radius: 0px;" type="text" class="form-control" id="muamoi" name="name" placeholder="Mua mới" >
-         </div>
-       </div>
-     </form>
-     <div class="row">
-      <div class="col-sm-10 col-md-offset-11">
-        <button class="btn btn-primary btn-md" onclick="updateForm();">
-          OK</button>
-        </div>
-      </div>
     </div>
   </div>
 </div>
@@ -146,16 +151,31 @@ function updateForm(){
       var tongso = document.getElementById("tongso").value;
       var daco = document.getElementById("daco").value;
       var muamoi = document.getElementById("muamoi").value;
-
+      var button = "<button style='none' class='fa fa-trash' aria-hidden='true' onclick='deleteRow(this)'/>"
+      
+      elementError = "<p class='empty'>Bắt buộc nhập</p>"
+      if(tenphoilieu == "" || daco == "" || muamoi == "" || tongso == ""){
+         alert("Nhập tất cả các trường!")
+      } else {
       rows += "<tr><td></td><td>" + tenphoilieu + "</td><td>" + quicach + "</td><td>" 
       + chungloai + "</td><td>" + xuatxu + "</td><td>" + donvitinh + "</td><td>"
-      + tongso + "</td><td>" + daco + "</td><td>" + muamoi + "</td><td class='text-center'><i class='fa fa-trash' aria-hidden='true'></i></td></tr>";
-
+      + tongso + "</td><td>" + daco + "</td><td>" + muamoi + "</td><td class='text-center'>"+button+"</td></tr>";
+      
       $(rows).appendTo("#table-result tbody");
+      //hide nodata
+       document.getElementById("nodata").style.display = "none";
       // hide model
       $('#myModalMaterial').modal('hide');
-      // table.appendChild(rows);
     }
+}
+
+function deleteRow(row) {
+    if (typeof(row) == "object") {
+        $(row).closest("tr").remove();
+    } else {
+        return false;
+    }
+}
 
 function myfuncdata(){
 var array = [];
@@ -168,7 +188,6 @@ $('#table-result tr').has('td').each(function() {
     });
     array.push(arrayItem);
   });
-
 tabledata = JSON.parse(JSON.stringify(array));
 $.ajax({
       url: "/materials",
@@ -188,13 +207,8 @@ $.ajax({
   });
 }
 
-function submitForm(){
- $('#formne').submit();
-}
-
 function submitData(){
  myfuncdata();
-  //submitForm();
 }
 
 </script>

@@ -14,6 +14,16 @@ class Api::LaboratoriesController < ApplicationController
                 end
             end
         end
+     #    @thietbi = Set.new
+     #    array.each do |element|
+     #    if visited.include?(element)
+    
+     #    else
+     #    visited << element
+     #    end
+     # end
+        
+        byebug
         render json: {:devices => @thietbi}
 	end
 end

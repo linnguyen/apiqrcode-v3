@@ -43,30 +43,35 @@ module ApplicationHelper
 		device = ChiTietNhapXuat.find_by(ma_thiet_bi: ma_thiet_bi)
 	end
     
-    def get_amount_of_output_device_by_room ma_pth,ma_thiet_bi
-        # tu phong -> nhanvien -> phieuxuat -> tim theo ma_tb
-       # stock_issue = []
-       # room = PhongThucHanh.find_by(ma_pth: ma_pth)
-       # staff = room.nhan_vien
-       # staff.each do |px|
-       # stock_issue << px
-       # end
-       # stock_issue.each do |
-       # phieuxuat.chi_tiet_nhap_xuat.where()
-    end
+  def get_amount_of_output_device_by_room ma_pth,ma_thiet_bi
+    # return device that have ma_phieu_xuat in ma_phieu_xuat of phong_thuc_hanh
+       apx = []
+       count = 0
+       pth = PhongThucHanh.find(ma_pth)
+       nhan_vien = pth.nhan_vien
+       nhan_vien.each do |nv|
+       	  nv.phieu_xuat.each do |px|
+            apx << px.ma_phieu_xuat
+          end
+       end
+       thiet_bi_xuat = ChiTietNhapXuat.where('ma_thiet_bi = ? and ma_phieu_nhap = ? and ma_phieu_xuat IN(?)', ma_thiet_bi, '',apx)
+       thiet_bi_xuat.each do |tb|
+          count = count + tb.so_luong
+       end
+       return count
+  end
 
 	def get_number_of_device_left ma_thiet_bi
 		input_amount = 0
-        input_device = ChiTietNhapXuat.where('ma_thiet_bi = ? && ma_phieu_xuat = ?',ma_thiet_bi,"")
+        input_device = ChiTietNhapXuat.where('ma_thiet_bi = ? ',ma_thiet_bi,"")
         input_device.each do |d|
            input_amount = input_amount + d.so_luong
         end
+  end
 
-        # attual_amount = 
-    end
-
-    def get_staff_by_id ma_nql
-    	staff = NhanVien.find_by(ma_nql: ma_nql)
-    end
+  def get_staff_by_id ma_nql
+      staff = NhanVien.find_by(ma_nql: ma_nql)
+  end
+  
 
 end
