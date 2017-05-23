@@ -30,6 +30,6 @@ class StatisticsController < ApplicationController
                       disposition: 'inline'        
             end
         end
-    end
+  end
     
 end

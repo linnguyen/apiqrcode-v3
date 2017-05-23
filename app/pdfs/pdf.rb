@@ -1,5 +1,6 @@
 require "prawn"
 class Pdf < Prawn::Document
+    include ApplicationHelper
 	def initialize(thietbi, year)
 		# encoding: utf-8
 		super(top_margin: 70)
@@ -31,12 +32,12 @@ class Pdf < Prawn::Document
 
     def table_inventory
      	i = 0
-
-     	move_down 40
+        move_down 40
 	    table_content = [[{content: "TT",rowspan: 2},{content:"Tên thiết bị", rowspan: 2},{content: "Mã thiết bị", rowspan: 2},{content: "DVT", rowspan: 2,width: 30},{content:"Số lượng lí thuyết", rowspan:2},{content: "Số lượng thực tế", rowspan:2},{content: "Chênh lệch", rowspan: 2},{content: "Nơi đặt để", rowspan: 2},{content: "Thời gian", rowspan:2, width: 60, :align => :center},{:content => "Tình trạng", :colspan => 3},{content:"Ghi chú",rowspan: 2}],
 	    [{content: "Bình thường",size: 8},{content: "Hỏng",size: 8,width:30},{content: "Xin thanh lí", size:8}]]+
 	     @thietbi.map do |device|
-	       [i+=1,"","hehe",device.ma_thiet_bi,"","",device.so_luong_thuc_te,device.ma_pth, device.thoi_gian,
+            actual_device = get_amount_of_output_device_by_room device.ma_pth,device.ma_thiet_bi
+	       [i+=1,(get_device_by_id device.ma_thiet_bi).ten_thiet_bi,device.ma_thiet_bi,device.so_luong_thuc_te,device.ma_pth, device.thoi_gian,
 	        device.so_luong_thiet_bi_binh_thuong == -1 ? "": device.so_luong_thiet_bi_binh_thuong,
 	        device.so_luong_thiet_bi_hong == -1 ? "": device.so_luong_thiet_bi_hong,
 	        device.so_luong_thiet_bi_thanh_li == -1 ? "": device.so_luong_thiet_bi_thanh_li,
