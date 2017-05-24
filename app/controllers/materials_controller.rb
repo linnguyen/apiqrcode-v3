@@ -68,4 +68,18 @@ class MaterialsController < ApplicationController
     	@ma_dxpl = params[:id]
     	@chitietdexuatphoilieu = ChiTietDeXuatPhoiLieu.where('ma_dxpl = ?', @ma_dxpl)
     end
+
+    def download
+       ma_dxpl = params[:id]
+       respond_to do |format|
+            format.html
+            format.pdf do
+              pdf = MaterialPdf.new(ma_dxpl)
+              send_data pdf.render,
+                      filename:"thongke",
+                      type: 'application/pdf',
+                      disposition: 'inline'        
+            end
+       end  
+    end
 end

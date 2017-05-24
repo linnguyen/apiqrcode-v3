@@ -54,7 +54,7 @@ module ApplicationHelper
             apx << px.ma_phieu_xuat
           end
        end
-       thiet_bi_xuat = ChiTietNhapXuat.where('ma_thiet_bi = ? and ma_phieu_nhap = ? and ma_phieu_xuat IN(?)', ma_thiet_bi, '',apx)
+       thiet_bi_xuat = ChiTietNhapXuat.where('ma_thiet_bi = ? and ma_phieu_nhap = ? and ma_phieu_xuat IN(?)', ma_thiet_bi,'',apx)
        thiet_bi_xuat.each do |tb|
           count = count + tb.so_luong
        end

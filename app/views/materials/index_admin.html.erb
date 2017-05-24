@@ -21,6 +21,7 @@
                                 <th>Trạng thái</th>
                                 <th>Xác nhận</th>
                                 <th>Gửi phản hồi</th>
+                                <th>In</th>
                               </tr>
                            </thead>
                            <tbody>
@@ -52,6 +53,11 @@
                                  <td class="text-center"><%= button_tag(name: '',value: s.ma_dxpl,class: "btComment",style: "border: none;") do %>
                                   <i class="fa fa-comment" aria-hidden="true"></i>
                                  <% end %></td>
+                                 <td>
+                                    <%= link_to download_material_path(id: s.ma_dxpl, format: 'pdf'), style: "border: none; size: 50dp;" do %>
+                                       <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
+                                    <% end %>
+                                 </td>
                                 </tr>
 
                                <% end %>
