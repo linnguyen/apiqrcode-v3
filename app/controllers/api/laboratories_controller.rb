@@ -9,10 +9,10 @@ class Api::LaboratoriesController < ApplicationController
         nhan_vien = phong_thuc_hanh.nhan_vien
         nhan_vien.each do |staff|
          	  staff.phieu_xuat.each do |ex_bill|
-                ex_bill.chi_tiet_nhap_xuat.pluck(:ma_thiet_bi, :ten_thiet_bi).each do |io_detail|
+                ex_bill.chi_tiet_nhap_xuat.each do |io_detail|
          	      @thietbi << io_detail
                 end
-            end
+              end
         end
         render json: {:devices => @thietbi}
 	end
