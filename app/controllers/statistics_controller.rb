@@ -29,7 +29,7 @@ class StatisticsController < ApplicationController
                       type: 'application/pdf',
                       disposition: 'inline'        
             end
-        end
+      end
   end
     
 end
