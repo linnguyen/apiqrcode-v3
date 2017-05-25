@@ -6,7 +6,7 @@ class Api::DeviceInformationsController < ApplicationController
          else
          	 phieu_xuat =  chi_tiet_phieu_xuat.phieu_xuat
              thiet_bi = phieu_xuat.chi_tiet_nhap_xuat.find_by(ma_code: params[:qrcode][0..14]) # -> one device
-             # byebug
+             byebug
              nhan_vien = phieu_xuat.nhan_vien
              nuoc_san_xuat = thiet_bi.nuoc_san_xuat
              render json: {:staff => nhan_vien, :device => thiet_bi, :origin => nuoc_san_xuat }
