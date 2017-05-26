@@ -95,6 +95,7 @@ aria-hidden="true">
                 <div class="col-sm-12">
                   <label>Nội dung phản hồi</label>
                   <textarea style="border-radius: 0px;" class="form-control" id="message"  rows = "8"></textarea>
+                  <!--<div class="empty" class="pull-left"><p>Không được trống!</p></div>-->
                 </div>
               </div>
               <input type="hidden" id="idContain">
@@ -144,8 +145,11 @@ $(".confirm").on('change', function(){
 
  $('#btSendMessage').on('click', function(){
   var message = $('#message').val();
-  var id = $('#idContain').val();
-  $.ajax({
+  if(message == ""){
+     alert("Phản hồi không thể trống!");
+  }else{
+    var id = $('#idContain').val();
+    $.ajax({
       url: "/material_message",
       type: "POST",
       dataType: 'json',
@@ -160,6 +164,8 @@ $(".confirm").on('change', function(){
       $('#myModalMessage').modal('hide');
       alert('Gửi phản hồi thành công!');
   });
+  }
+  
 });
 
 

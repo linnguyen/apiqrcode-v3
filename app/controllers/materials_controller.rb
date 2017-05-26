@@ -52,7 +52,9 @@ class MaterialsController < ApplicationController
 			dxpl.update_attributes(trang_thai: 1)
 		else
 			dxpl.update_attributes(xac_nhan: 0)
-			dxpl.update_attributes(trang_thai: 0)
+      if dxpl.truong_phan_hoi == ""
+			  dxpl.update_attributes(trang_thai: 0)
+      end
 		end
 	end
     
