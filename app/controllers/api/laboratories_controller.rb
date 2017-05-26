@@ -16,4 +16,24 @@ class Api::LaboratoriesController < ApplicationController
         end
         render json: {:devices => @thietbi}
 	end
+
+  def get_number_of_device_left
+    thiet_bi = []
+    thiet_bi_nhap = ChiTietNhapXuat.where('ma_phieu_xuat = ?', '')
+    thiet_bi_nhap.each do |tb|
+       thiet_bi_xuat = ChiTietNhapXuat.where('ma_phieu_nhap = ? and ma_thiet_bi = ?', '',tb.ma_thiet_bi)
+      if thiet_bi_xuat.nil?
+        thiet_bi << ChiTietNhapXuat.new(ma_thiet_bi: tb.ma_thiet_bi, ten_thiet_bi: tb.ten_thiet_bi, so_luong: tb.so_luong)
+      else
+        count = 0
+        thiet_bi_xuat.each do |tbx|
+           count = count + tbx.so_luong
+        end
+        value = tb.so_luong - count
+        thiet_bi << ChiTietNhapXuat.new(ma_thiet_bi: tb.ma_thiet_bi, ten_thiet_bi: tb.ten_thiet_bi, so_luong: value)
+      end
+    end
+    render  json: {:device_left => thiet_bi}
+  end
+
 end
