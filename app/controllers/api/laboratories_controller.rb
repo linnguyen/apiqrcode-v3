@@ -23,14 +23,14 @@ class Api::LaboratoriesController < ApplicationController
     thiet_bi_nhap.each do |tb|
        thiet_bi_xuat = ChiTietNhapXuat.where('ma_phieu_nhap = ? and ma_thiet_bi = ?', '',tb.ma_thiet_bi)
       if thiet_bi_xuat.nil?
-        thiet_bi << ChiTietNhapXuat.new(ma_thiet_bi: tb.ma_thiet_bi, ten_thiet_bi: tb.ten_thiet_bi, so_luong: tb.so_luong)
+        thiet_bi << ChiTietNhapXuat.new(ma_thiet_bi: tb.ma_thiet_bi, ten_thiet_bi: tb.ten_thiet_bi, so_luong: tb.so_luong, mo_ta: tb.mo_ta)
       else
         count = 0
         thiet_bi_xuat.each do |tbx|
            count = count + tbx.so_luong
         end
         value = tb.so_luong - count
-        thiet_bi << ChiTietNhapXuat.new(ma_thiet_bi: tb.ma_thiet_bi, ten_thiet_bi: tb.ten_thiet_bi, so_luong: value)
+        thiet_bi << ChiTietNhapXuat.new(ma_thiet_bi: tb.ma_thiet_bi, ten_thiet_bi: tb.ten_thiet_bi, so_luong: value, mo_ta: tb.mo_ta)
       end
     end
     render  json: {:device_left => thiet_bi}
